@@ -3,13 +3,13 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Welcome";
+    var session = HttpContext.Session.GetString("UserSession");
 }
-
+@session
 <div class="container">
     <div class="row">
         <div class="col-md">
             <img src="/images/safety.svg" alt="RSAllies Logo" class="img-fluid" />
-            
         </div>
         <div class="col-md">
             <div class="card">
