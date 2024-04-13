@@ -1,8 +1,41 @@
 ﻿@page
 @model IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Welcome";
 }
 
-
-<p>Welcome</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <img src="/images/safety.svg" alt="RSAllies Logo" class="img-fluid" />
+            
+        </div>
+        <div class="col-md">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Get yourself tested</h3>
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name / Jina la Kwanza</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Mwajuma" asp-for="Input!.FirstName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name / Jina la Mwisho</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Hamis" asp-for="Input!.LastName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone / Nambari ya Simu</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="0754677890" asp-for="Input!.Phone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email / Barua pepe</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com" asp-for="Input!.Email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

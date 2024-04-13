@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RSAllies.Models;
 
 namespace RSAllies.Pages
 {
@@ -7,6 +8,8 @@ namespace RSAllies.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        [BindProperty]
+        public UserInput? Input { get; set;}
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
