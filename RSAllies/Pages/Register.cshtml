@@ -5,3 +5,86 @@
     ViewData["Title"] = "Register";
 }
 
+<div class="container-fluid english">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" asp-for="Input!.FirstName">
+                            <span asp-validation-for="Input!.FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" asp-for="Input!.LastName">
+                            <span asp-validation-for="Input!.LastName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" asp-for="Input!.Email">
+                            <span asp-validation-for="Input!.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="phone" asp-for="Input!.Phone">
+                            <span asp-validation-for="Input!.Phone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" asp-for="Input!.Password">
+                            <span asp-validation-for="Input!.Password" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid swahili" style="display: none">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="firstName" class="form-label">Jina la Kwanza</label>
+                            <input type="text" class="form-control" id="firstName" asp-for="SInput!.FirstName">
+                            <span asp-validation-for="SInput!.FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="lastName" class="form-label">Jina la Mwisho</label>
+                            <input type="text" class="form-control" id="lastName" asp-for="SInput!.LastName">
+                            <span asp-validation-for="SInput!.LastName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Barua Pepe</label>
+                            <input type="email" class="form-control" id="email" asp-for="SInput!.Email">
+                            <span asp-validation-for="SInput!.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="phone" class="form-label">Namba ya Simu</label>
+                            <input type="tel" class="form-control" id="phone" asp-for="SInput!.Phone">
+                            <span asp-validation-for="SInput!.Phone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Nywila</label>
+                            <input type="password" class="form-control" id="password" asp-for="SInput!.Password">
+                            <span asp-validation-for="SInput!.Password" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
