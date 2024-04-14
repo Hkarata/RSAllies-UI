@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using RSAllies;
 using RSAllies.Authentication;
+using RSAllies.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,11 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
-builder.Services.AddHttpClient<ApiClient>(client => client.BaseAddress = new("http://localhost:5000"));
+builder.Services.AddScoped<LanguageSessionManager>();
+
+builder.Services.AddScoped<SessionChecker>();
+
+builder.Services.AddHttpClient<ApiClient>(client => client.BaseAddress = new Uri("http://localhost:5000"));
 
 var app = builder.Build();
 

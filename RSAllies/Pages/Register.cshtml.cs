@@ -2,7 +2,7 @@
 
 namespace RSAllies.Pages;
 
-public class Register : PageModel
+public class RegisterModel : PageModel
 {
     public void OnGet()
     {
