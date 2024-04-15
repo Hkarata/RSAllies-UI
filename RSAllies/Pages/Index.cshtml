@@ -3,15 +3,38 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Welcome";
-    var session = HttpContext.Session.GetString("UserSession");
 }
-@session
+
 <div class="container">
     <div class="row">
         <div class="col-md">
             <img src="/images/safety.svg" alt="RSAllies Logo" class="img-fluid" />
         </div>
         <div class="col-md">
+            
+            <div class="d-flex h-100 flex-column justify-content-center align-items-center">
+                <div class="english">
+                    <h2 style="font-family: 'Segoe Script',serif">Make Roads Safer</h2>
+                    <br/>
+                    <p>A driver-centered initiative aimed to test theoretical knowledge about Road Safety.</p>
+                    <ul>
+                        <li>Book your place</li>
+                        <li>Get tested</li>
+                        <li>Proceed with your license application</li>
+                    </ul>
+                </div>
+                
+                <div class="swahili" style="display: none">
+                    <h2 style="font-family: 'Segoe Script',serif">Dumisha Usalama Barabarani.</h2>
+                    <br/>
+                    <p>Mpango unaolenga kupima maarifa ya kinadharia kuhusu Usalama Barabarani kwa madereva.</p>
+                    <ul>
+                        <li>Weka Nafasi yako</li>
+                        <li>Fanya Mtihani</li>
+                        <li>Endelea na mchakato wa leseni</li>
+                    </ul>
+                </div>
+            </div>
             
         </div>
     </div>

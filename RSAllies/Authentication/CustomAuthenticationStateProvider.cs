@@ -21,7 +21,7 @@ namespace RSAllies.Authentication
                 if (string.IsNullOrEmpty(userSession))
                 { return await Task.FromResult(new AuthenticationState(_anonymous)); }
 
-                var user = JsonConvert.DeserializeObject<UserDTO>(userSession);
+                var user = JsonConvert.DeserializeObject<UserDto>(userSession);
                 var claimsPrincipal = new ClaimsPrincipal(
                     new ClaimsIdentity(new[]
                         {
@@ -41,7 +41,7 @@ namespace RSAllies.Authentication
             }
         }
 
-        public Task UpdateAuthenticationState(UserDTO user)
+        public Task UpdateAuthenticationState(UserDto user)
         {
             httpContextAccessor!.HttpContext!.Session.SetString("UserSession", JsonConvert.SerializeObject(user));
             var claimsPrincipal = new ClaimsPrincipal(

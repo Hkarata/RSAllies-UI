@@ -4,8 +4,9 @@
 @{
     ViewData["Title"] = "Login";
 }
-
+<partial name="Shared/_StatusMessage" for="StatusMessage"/>
 <div class="container-fluid english">
+    
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6 col-12">
             <div class="card">
@@ -13,7 +14,7 @@
                     <div class="d-flex justify-content-center">
                         <img src="images/logo.svg" alt="logo" style="width: 35%"/>
                     </div>
-                    <form>
+                    <form method="post">
                         <div class="mb-3">
                             <label class="form-label">Phone Number</label>
                             <input class="form-control" asp-for="Login!.Phone" type="tel"/>
@@ -24,6 +25,7 @@
                             <input class="form-control" type="password" asp-for="Login!.Password"/>
                             <span asp-validation-for="Login!.Password" class="text-danger"></span>
                         </div>
+                        <input type="hidden" name="submittedForm" value="English">
                         <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>
                 </div>
@@ -40,7 +42,7 @@
                     <div class="d-flex justify-content-center">
                         <img src="images/logo.svg" alt="logo" style="width: 35%"/>
                     </div>
-                    <form>
+                    <form method="post">
                         <div class="mb-3">
                             <label class="form-label">Namba ya Simu</label>
                             <input class="form-control" asp-for="SLogin!.Phone" type="tel"/>
@@ -51,6 +53,7 @@
                             <input class="form-control" type="password" asp-for="SLogin!.Password"/>
                             <span asp-validation-for="SLogin!.Password" class="text-danger"></span>
                         </div>
+                        <input type="hidden" name="submittedForm" value="Swahili">
                         <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>
                 </div>

@@ -11,10 +11,10 @@ public class SessionChecker(IHttpContextAccessor httpContextAccessor)
         return !string.IsNullOrEmpty(session);
     }
 
-    public UserDTO? GetUserData()
+    public UserDto? GetUserData()
     {
         var session = httpContextAccessor.HttpContext?.Session.GetString("UserSession");
-        var data = JsonConvert.DeserializeObject<UserDTO>(session!);
+        var data = JsonConvert.DeserializeObject<UserDto>(session!);
         return data;
     }
 }

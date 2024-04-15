@@ -9,7 +9,8 @@ namespace RSAllies.Pages
     {
         public UserDto? UserData { get; set; }
         public string StatusMessage { get; set; } = string.Empty;
-        public IActionResult OnGet()
+        
+        public async Task<IActionResult> OnGetAsync()
         {
             var session = HttpContext.Session.GetString("UserSession");
             if (string.IsNullOrEmpty(session))
@@ -17,6 +18,8 @@ namespace RSAllies.Pages
                 return RedirectToPage("./Login");
             }
             UserData = JsonConvert.DeserializeObject<UserDto>(session!);
+
+            StatusMessage = $"Welcome!, {UserData!.FirstName} {UserData!.LastName}";
 
             return Page();
         }

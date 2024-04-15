@@ -10,7 +10,7 @@
         <div class="col-md-6 col-12">
             <div class="card">
                 <div class="card-body">
-                    <form>
+                    <form method="post">
                         <div class="form-group mb-3">
                             <label for="firstName" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="firstName" asp-for="Input!.FirstName">
@@ -36,6 +36,7 @@
                             <input type="password" class="form-control" id="password" asp-for="Input!.Password">
                             <span asp-validation-for="Input!.Password" class="text-danger"></span>
                         </div>
+                        <input type="hidden" name="submittedForm" value="English">
                         <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>
                 </div>
@@ -49,7 +50,7 @@
         <div class="col-md-6 col-12">
             <div class="card">
                 <div class="card-body">
-                    <form>
+                    <form method="post">
                         <div class="form-group mb-3">
                             <label for="firstName" class="form-label">Jina la Kwanza</label>
                             <input type="text" class="form-control" id="firstName" asp-for="SInput!.FirstName">
@@ -75,6 +76,7 @@
                             <input type="password" class="form-control" id="password" asp-for="SInput!.Password">
                             <span asp-validation-for="SInput!.Password" class="text-danger"></span>
                         </div>
+                        <input type="hidden" name="submittedForm" value="Swahili">
                         <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>
                 </div>
