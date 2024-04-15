@@ -7,5 +7,109 @@
 <partial name="Shared/_StatusMessage" for="StatusMessage"/>
 
 <div class="container-fluid">
+    <p>Reserve a place at one of our test centers</p>
+
+    <form class="row">
+        <div class="form-group col-md mb-3">
+            <label for="region">Region</label>
+            <select class="form-control" id="region">
+                <option></option>
+                <option>Arusha</option>
+                <option>Dar es Salaam</option>
+                <option>Dodoma</option>
+                <option>Geita</option>
+                <option>Iringa</option>
+                <option>Kagera</option>
+                <option>Katavi</option>
+                <option>Kigoma</option>
+                <option>Kilimanjaro</option>
+                <option>Lindi</option>
+                <option>Manyara</option>
+                <option>Mara</option>
+                <option>Mbeya</option>
+                <option>Morogoro</option>
+                <option>Mtwara</option>
+                <option>Mwanza</option>
+                <option>Njombe</option>
+                <option>Pemba North</option>
+                <option>Pemba South</option>
+                <option>Pwani</option>
+                <option>Rukwa</option>
+                <option>Ruvuma</option>
+                <option>Shinyanga</option>
+                <option>Simiyu</option>
+                <option>Singida</option>
+                <option>Tabora</option>
+                <option>Tanga</option>
+                <option>Zanzibar Central/South</option>
+                <option>Zanzibar North</option>
+                <option>Zanzibar Urban/West</option>
+            </select>
+        </div>
+        <div class="form-group col-md mb-3">
+            <label>Date</label>
+            <input type="date" class="form-control" id="date" />
+        </div>
+        <div class="col-md">
+            <label></label>
+            <input type="submit" value="Filter" class="form-control btn btn-primary"/>
+        </div>
+    </form>
+
+    <br/>
+    <p>Test Centers</p>
     
+    <div class="container">
+        <div class="row">
+            @if (Model.Venues is { Count: > 0 })
+            {
+                foreach (var venue in Model.Venues)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                        <div class="card ClickableDiv" style="cursor: pointer;" data-value1="@venue.Id" data-value2="@venue.Name" data-value3="@venue.Address">
+                            <img class="card-img-top img-shuffle"  alt="sample images" src=""/>
+                            <div class="card-body">
+                                <p class="card-title">@venue.Name</p>
+                                <p class="card-title">@venue.Address</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col">
+                    <p>No venues found.</p>
+                </div>
+            }
+        </div>
+    </div>
+
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function() {
+            // Define image URLs with clear descriptions (same as before)
+            const venueImages = [
+                { url: "/images/first-image.jpg", title: "First Image" },
+                { url: "/images/second-image.jpg", title: "Second Image" },
+                { url: "/images/third-image.jpg", title: "Third Image" },
+                { url: "/images/fourth-image.jpg", title: "Fourth Image" }
+            ];
+
+            // Shuffle image URLs using Math.random()
+            venueImages.sort(() => Math.random() - 0.5);
+
+            // Apply shuffled images to cards on document load
+            $('.img-shuffle').each(function(index) {
+                // Ensure image index stays within bounds
+                const imageIndex = index % venueImages.length; // Wrap around if needed
+                $(this).attr('src', venueImages[imageIndex].url);
+                $(this).attr('alt', venueImages[imageIndex].title);
+            });
+        });
+    </script>
+}

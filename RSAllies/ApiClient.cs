@@ -37,5 +37,13 @@ namespace RSAllies
             var result = JsonConvert.DeserializeObject<Result<UserDto>>(content)!;
             return result;
         }
+
+        public async Task<Result<List<VenueDto>>> GetVenuesAsync()
+        {
+            var response = await httpClient.GetAsync("/api/venues");
+            var content = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Result<List<VenueDto>>>(content)!;
+            return result;
+        }
     }
 }

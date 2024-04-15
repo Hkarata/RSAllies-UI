@@ -5,7 +5,38 @@
     ViewData["Title"] = "Welcome";
     var session = HttpContext.Session.GetString("UserSession");
 }
+
 <partial name="Shared/_StatusMessage" for="StatusMessage"/>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <p>Your Current Booking</p>
+            <div class="row">
+                <div class="col-md">
+                    Venue:
+                </div>
+                <div class="col-md">
+                    Address:
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    Date:
+                </div>
+                <div class="col-md">
+                    Time:
+                </div>
+                <div class="col-md">
+                    Status:
+                </div>
+                <div class="col-md">
+                    Actions
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
