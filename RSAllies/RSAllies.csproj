@@ -11,6 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="App_Code\**" />
+    <Content Remove="App_Code\**" />
+    <EmbeddedResource Remove="App_Code\**" />
+    <None Remove="App_Code\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ContainerEnvironmentVariable Include="ASPNETCORE_HTTPS_PORTS">
       <Value>8081</Value>
     </ContainerEnvironmentVariable>

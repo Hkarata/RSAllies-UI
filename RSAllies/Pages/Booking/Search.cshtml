@@ -1,0 +1,219 @@
+﻿@page
+@model SearchModel
+@{
+    ViewData["Title"] = "Search Results";
+}
+<partial name="Shared/_StatusMessage" for="StatusMessage" />
+
+<div class="container-fluid">
+
+	<form class="english row" method="post">
+		<div class="form-group col-md mb-3">
+			<label class="form-label">Region</label>
+			<select asp-for="Filter!.Region" class="english form-control">
+				<option></option>
+				<option>Arusha</option>
+				<option>Dar es Salaam</option>
+				<option>Dodoma</option>
+				<option>Geita</option>
+				<option>Iringa</option>
+				<option>Kagera</option>
+				<option>Katavi</option>
+				<option>Kigoma</option>
+				<option>Kilimanjaro</option>
+				<option>Lindi</option>
+				<option>Manyara</option>
+				<option>Mara</option>
+				<option>Mbeya</option>
+				<option>Morogoro</option>
+				<option>Mtwara</option>
+				<option>Mwanza</option>
+				<option>Njombe</option>
+				<option>Pemba North</option>
+				<option>Pemba South</option>
+				<option>Pwani</option>
+				<option>Rukwa</option>
+				<option>Ruvuma</option>
+				<option>Shinyanga</option>
+				<option>Simiyu</option>
+				<option>Singida</option>
+				<option>Tabora</option>
+				<option>Tanga</option>
+				<option>Zanzibar Central/South</option>
+				<option>Zanzibar North</option>
+				<option>Zanzibar Urban/West</option>
+			</select>
+			<span asp-validation-for="Filter!.Region" class="text-danger"></span>
+		</div>
+		<div class="form-group col-md mb-3">
+			<label class="form-label">Date</label>
+			<input asp-for="Filter!.Date" type="date" class="mydate form-control" />
+			<span asp-validation-for="Filter!.Date" class="text-danger"></span>
+		</div>
+		<div class="col-md">
+			<label></label>
+			<input type="submit" value="Filter" class="english form-control btn btn-primary" />
+		</div>
+		<input type="hidden" name="submittedForm" value="English">
+	</form>
+	<form class="swahili row" style="display: none" method="post">
+		<div class="form-group col-md mb-3">
+			<label for="region" class="form-label">Mkoa</label>
+			<select asp-for="SFilter!.Region" class="form-control" id="region">
+				<option></option>
+				<option>Arusha</option>
+				<option>Dar es Salaam</option>
+				<option>Dodoma</option>
+				<option>Geita</option>
+				<option>Iringa</option>
+				<option>Kagera</option>
+				<option>Katavi</option>
+				<option>Kigoma</option>
+				<option>Kilimanjaro</option>
+				<option>Lindi</option>
+				<option>Manyara</option>
+				<option>Mara</option>
+				<option>Mbeya</option>
+				<option>Morogoro</option>
+				<option>Mtwara</option>
+				<option>Mwanza</option>
+				<option>Njombe</option>
+				<option>Pemba North</option>
+				<option>Pemba South</option>
+				<option>Pwani</option>
+				<option>Rukwa</option>
+				<option>Ruvuma</option>
+				<option>Shinyanga</option>
+				<option>Simiyu</option>
+				<option>Singida</option>
+				<option>Tabora</option>
+				<option>Tanga</option>
+				<option>Zanzibar Central/South</option>
+				<option>Zanzibar North</option>
+				<option>Zanzibar Urban/West</option>
+			</select>
+			<span asp-validation-for="SFilter!.Region" class="text-danger"></span>
+		</div>
+		<div class="form-group col-md mb-3">
+			<label class="form-label">Tarehe</label>
+			<input asp-for="SFilter!.Date" type="date" class="mydate form-control" id="date" />
+			<span asp-validation-for="SFilter!.Date" class="text-danger"></span>
+		</div>
+		<div class="col-md">
+			<label class="form-label" style="color: transparent">rrr</label>
+			<input type="hidden" name="submittedForm" value="Swahili">
+			<input type="submit" value="Tafuta" class="form-control btn btn-primary" />
+		</div>
+
+	</form>
+
+	<br />
+
+	<p class="english">Search Results</p>
+	<p class="swahili" style="display: none;">Matokeo</p>
+
+	<div class="container-fluid">
+		
+		@if(Model.Sessions is {Count: > 0 })
+		{
+			<div class="row row-cols-1 row-cols-md-4 g-4">
+				@foreach (var session in Model.Sessions.OrderBy(s => s.SessionDate).Where(s => !s.IsFull && s.SessionDate >= DateTime.Now && s.SessionDate < DateTime.Now.AddMonths(1)))
+				{
+					<div class="col d-flex flex-column">
+						<div class="card border-warning h-100 bg-light">
+							<div class="card-body">
+								<h5 class="card-title">@session.VenueName</h5>
+								<p class="card-text">
+									<span class="english">Date:</span> <span class="swahili" style="display: none">Tarehe:</span> @session.SessionDate.ToString("dd/MM/yyyy")<br>
+									<span class="english">Time:</span> <span class="swahili" style="display: none">Muda:</span> @session.SessionDate.ToString("HH:mm")<br>
+								</p>
+								<form method="dialog">
+									<input type="hidden" name="region" value="@session.VenueName" />
+									<input type="hidden" name="date" value="@session.SessionDate" />
+									<input type="hidden" name="time" value="@session.SessionDate" />
+									<input type="hidden" name="availableSlots" value="@session.IsFull" />
+									<input type="submit" value="Book" class="btn btn-primary book-btn" data-user-id="@Model!.UserData!.Id" data-session-id="@session.Id" data-venue-name="@session.VenueName" data-session-date="@session.SessionDate.ToString("dd/MM/yyyy")" data-session-time="@session.SessionDate.ToString("HH:mm")" />
+								</form>
+							</div>
+						</div>
+					</div>
+				}
+			</div>			
+		}
+		else
+		{
+			<p class="english">No sessions found.</p>
+            <p class="swahili" style="display: none;">Hakuna Nafasi zilizopatikana.</p>
+		}
+
+	</div>
+</div>
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="confirmationModalLabel">Confirm Booking</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to book a session at <span id="venue-name"></span> on <span id="session-date"></span>?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<form method="post" asp-page="Booking/Book" id="bookingForm">
+					<input type="hidden" name="region" value="" id="hidden-venue-name" />
+					<input type="hidden" name="date" value="" id="hidden-session-date" />
+					<input type="hidden" name="time" value="" />
+					<input type="hidden" name="availableSlots" value="" />
+					<button type="submit" class="btn btn-primary">Book Now</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+	<script>
+		$(document).ready(function () {
+			var today = new Date().toISOString().split('T')[0];
+			$('.mydate').attr('min', today);
+
+			// Disable keyboard input
+			$('.mydate').on('keydown', function (e) {
+				e.preventDefault();
+			});
+
+			$('.mydate').on('change', function () {
+				var selectedDate = new Date(this.value);
+				var selectedDay = selectedDate.getUTCDay();
+
+				// JavaScript's getUTCDay() method returns 0 for Sunday, 1 for Monday, etc.
+				// So, 2 is for Tuesday and 5 is for Friday.
+				if (selectedDay !== 2 && selectedDay !== 5) {
+					var isEnglish = localStorage.getItem('isEnglish') === 'true';
+					var message = isEnglish ? 'Please select either a Tuesday or a Friday.' : 'Tafadhali chagua Jumanne au Ijumaa.';
+					alert(message);
+					this.value = '';
+				}
+			});
+		});
+
+		$(document).ready(function () {
+			$('.book-btn').click(function () {
+				var sessionId = $(this).data('sessionId');
+				var venueName = $(this).data('venueName');
+				var sessionDate = $(this).data('sessionDate');
+
+				$('#venue-name').text(venueName);
+				$('#session-date').text(sessionDate);
+				$('#hidden-venue-name').val(venueName);
+				$('#hidden-session-date').val(sessionDate);
+
+				$('#confirmationModal').modal('show');
+			});
+		});
+	</script>
+}

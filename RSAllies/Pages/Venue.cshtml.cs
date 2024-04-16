@@ -5,23 +5,23 @@ namespace RSAllies.Pages;
 
 public class VenueModel(ApiClient apiClient) : PageModel
 {
-    public Guid? VenueId { get; private set; }
+	public Guid? VenueId { get; private set; }
 
-    public string? StatusMessage { get; set; }
-    
-    public List<SessionDto>? Sessions {get; set; }
-    public async Task OnGetAsync()
-    {
-        var encodedId = Request.Query["value1"];
-        var result = await apiClient.GetVenueSessionsAsync(encodedId!);
-        if (result is null)
-        {
-            StatusMessage = "There are no sessions for this venue.";
-        }
-        else
-        {
-            Sessions = result.Value;
-        }
-    }
-    
+	public string? StatusMessage { get; set; }
+
+	public List<SessionDto>? Sessions { get; set; }
+	public async Task OnGetAsync()
+	{
+		var encodedId = Request.Query["value1"];
+		var result = await apiClient.GetVenueSessionsAsync(encodedId!);
+		if (result is null)
+		{
+			StatusMessage = "There are no sessions for this venue.";
+		}
+		else
+		{
+			Sessions = result.Value;
+		}
+	}
+
 }

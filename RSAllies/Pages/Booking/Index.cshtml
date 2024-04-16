@@ -1,5 +1,5 @@
 ﻿@page
-@model BookingModel
+@model IndexModel
 @{
 	ViewData["Title"] = "Booking";
 }
@@ -8,128 +8,32 @@
 
 <div class="container-fluid">
 
-	<p class="english">Reserve a place at one of our test centers</p>
-	<p class="swahili" style="display: none">Weka nafasi yako</p>
-
-	<div class="accordion" id="findSessionAccordion">
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="findSessionHeading">
-				<button class="english accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#findSessionContent" aria-expanded="false" aria-controls="findSessionContent">
-					Find a Session
-				</button>
-				<button style="display: none;" class="swahili accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#findSessionContent" aria-expanded="false" aria-controls="findSessionContent">
-					Tafuta nafasi
-				</button>
-			</h2>
-			<div id="findSessionContent" class="accordion-collapse collapse" aria-labelledby="findSessionHeading" data-bs-parent="#findSessionAccordion">
-				<div class="accordion-body">
-					<form class="english row" method="post">
-						<div class="form-group col-md mb-3">
-							<label class="form-label">Region</label>
-							<select asp-for="Filter!.Region" class="english form-control">
-								<option></option>
-								<option>Arusha</option>
-								<option>Dar es Salaam</option>
-								<option>Dodoma</option>
-								<option>Geita</option>
-								<option>Iringa</option>
-								<option>Kagera</option>
-								<option>Katavi</option>
-								<option>Kigoma</option>
-								<option>Kilimanjaro</option>
-								<option>Lindi</option>
-								<option>Manyara</option>
-								<option>Mara</option>
-								<option>Mbeya</option>
-								<option>Morogoro</option>
-								<option>Mtwara</option>
-								<option>Mwanza</option>
-								<option>Njombe</option>
-								<option>Pemba North</option>
-								<option>Pemba South</option>
-								<option>Pwani</option>
-								<option>Rukwa</option>
-								<option>Ruvuma</option>
-								<option>Shinyanga</option>
-								<option>Simiyu</option>
-								<option>Singida</option>
-								<option>Tabora</option>
-								<option>Tanga</option>
-								<option>Zanzibar Central/South</option>
-								<option>Zanzibar North</option>
-								<option>Zanzibar Urban/West</option>
-							</select>
-							<span asp-validation-for="Filter!.Region" class="text-danger"></span>
-						</div>
-						<div class="form-group col-md mb-3">
-							<label class="form-label">Date</label>
-							<input asp-for="Filter!.Date" type="date" class="mydate form-control"/>
-							<span asp-validation-for="Filter!.Date" class="text-danger"></span>
-						</div>
-						<div class="col-md">
-							<label></label>
-							<input type="submit" value="Filter" class="english form-control btn btn-primary"/>
-						</div>
-						<input type="hidden" name="submittedForm" value="English">
-					</form>
-					<form class="swahili row" style="display: none" method="post">
-						<div class="form-group col-md mb-3">
-							<label for="region" class="form-label">Mkoa</label>
-							<select asp-for="SFilter!.Region" class="form-control" id="region">
-								<option></option>
-								<option>Arusha</option>
-								<option>Dar es Salaam</option>
-								<option>Dodoma</option>
-								<option>Geita</option>
-								<option>Iringa</option>
-								<option>Kagera</option>
-								<option>Katavi</option>
-								<option>Kigoma</option>
-								<option>Kilimanjaro</option>
-								<option>Lindi</option>
-								<option>Manyara</option>
-								<option>Mara</option>
-								<option>Mbeya</option>
-								<option>Morogoro</option>
-								<option>Mtwara</option>
-								<option>Mwanza</option>
-								<option>Njombe</option>
-								<option>Pemba North</option>
-								<option>Pemba South</option>
-								<option>Pwani</option>
-								<option>Rukwa</option>
-								<option>Ruvuma</option>
-								<option>Shinyanga</option>
-								<option>Simiyu</option>
-								<option>Singida</option>
-								<option>Tabora</option>
-								<option>Tanga</option>
-								<option>Zanzibar Central/South</option>
-								<option>Zanzibar North</option>
-								<option>Zanzibar Urban/West</option>
-							</select>
-							<span asp-validation-for="SFilter!.Region" class="text-danger"></span>
-						</div>
-						<div class="form-group col-md mb-3">
-							<label class="form-label">Tarehe</label>
-							<input asp-for="SFilter!.Date" type="date" class="mydate form-control" id="date" />
-							<span asp-validation-for="SFilter!.Date" class="text-danger"></span>
-						</div>
-						<div class="col-md">
-							<label class="form-label" style="color: transparent">rrr</label>
-							<input type="hidden" name="submittedForm" value="Swahili">
-							<input type="submit" value="Tafuta" class="form-control btn btn-primary"/>
-						</div>
-						
-					</form>
-				</div>
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-12 col-md-8">
+				<p class="display-6 mb-4">
+					<span class="english">Reserve a Place at One of Our Test Centers</span>
+					<span class="swahili" style="display: none;font-family:'Segoe Script'">Weka Nafasi Yako Katika Kituo chochote cha Mtihani</span>
+				</p>
+				<p class="lead mb-0">
+					<span class="english">Click on any venue to see available sessions and place your booking.</span>
+					<span class="swahili" style="display: none;">Chagua kituo chochote ili kuona vipindi vinavyopatikana na uweke nafasi yako.</span>
+				</p>
+			</div>
+			<div class="col-12 col-md-4 d-flex justify-content-md-end justify-content-start mt-3 mt-md-0">
+				<a href="/Booking/Search" class="btn btn-primary">
+					<span class="english">Find a Session</span>
+					<span class="swahili" style="display: none;">Tafuta nafasi</span>
+				</a>
 			</div>
 		</div>
 	</div>
+
+
 	
 	<br/>
 	<p class="english">Test Centers</p>
-	<p class="swahili" style="display: none">Vituo vya Mtihani</p>
+	<h4 class="swahili" style="display: none">Vituo vya Mtihani</h4>
 	<div class="container">
 		<div class="row">
 			@if (Model.Venues is { Count: > 0 })
@@ -137,7 +41,7 @@
 				foreach (var venue in Model.Venues)
 				{
 					<div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-						<div class="card ClickableDiv" style="cursor: pointer;" data-value1="@venue.Id" data-value2="@venue.Name" data-value3="@venue.Address">
+						<div class="card h-100 ClickableDiv" style="cursor: pointer;" data-value1="@venue.Id" data-value2="@venue.Name" data-value3="@venue.Address">
 							<img class="card-img-top img-shuffle"  alt="sample images" src=""/>
 							<div class="card-body">
 								<p class="card-title">@venue.Name</p>
@@ -177,9 +81,6 @@
 			});
 		});
 
-		$(document).ready(function () {
-			var today = new Date().toISOString().split('T')[0];
-			$('.mydate').attr('min', today);
-		});
+		
 	</script>
 }
