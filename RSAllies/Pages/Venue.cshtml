@@ -1,13 +1,15 @@
 ﻿@page
-@model RSAllies.Pages.Venue
+@model VenueModel
 
 @{
     ViewData["Title"] = "Venue";
+    
 }
-
+<partial name="Shared/_StatusMessage" for="StatusMessage"/>
 <p id="value1"></p>
 <p id="value2"></p>
 <p id="value3"></p>
+
 
 
 @section Scripts {
@@ -16,7 +18,7 @@
 <script>
     $(document).ready(function(){
         let urlParams = new URLSearchParams(window.location.search);
-        let value1 = atob(decodeURIComponent(urlParams.get('value1')));
+        let value1 = decodeURIComponent(urlParams.get('value1'));
         let combinedValue = atob(decodeURIComponent(urlParams.get('combined-value')));
         let values = combinedValue.split("|");
 

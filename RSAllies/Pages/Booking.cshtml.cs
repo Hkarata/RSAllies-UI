@@ -3,11 +3,13 @@ using RSAllies.Contracts;
 
 namespace RSAllies.Pages;
 
-public class Booking(ApiClient apiClient) : PageModel
+public class BookingModel(ApiClient apiClient) : PageModel
 {
     public string StatusMessage { get; set; } = string.Empty;
     
     public List<VenueDto>? Venues { get; set; }
+
+    private IQueryable<VenueDto>? filteredVenues;
     public async Task OnGetAsync()
     {
         var result = await apiClient.GetVenuesAsync();

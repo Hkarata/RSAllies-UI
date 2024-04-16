@@ -45,5 +45,21 @@ namespace RSAllies
             var result = JsonConvert.DeserializeObject<Result<List<VenueDto>>>(content)!;
             return result;
         }
+
+        public async Task<Result<List<SessionDto>>?> GetVenueSessionsAsync(string id)
+        {
+            var response = await httpClient.GetAsync($"api/venue/{id}/sessions");
+            var content = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                var result = JsonConvert.DeserializeObject<Result<List<SessionDto>>>(content)!;
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
     }
 }
