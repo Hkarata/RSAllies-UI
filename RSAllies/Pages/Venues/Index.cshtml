@@ -1,19 +1,30 @@
 ﻿@page
-@model RSAllies.Pages.Venues.Index
+@model IndexModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Venue";
 }
+<partial name="Shared/_StatusMessage" for="StatusMessage"/>
+<p id="value1"></p>
+<p id="value2"></p>
+<p id="value3"></p>
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
-</div>
-</body>
-</html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+    $(document).ready(function(){
+        let urlParams = new URLSearchParams(window.location.search);
+        let value1 = decodeURIComponent(urlParams.get('value1'));
+        let combinedValue = atob(decodeURIComponent(urlParams.get('combined-value')));
+        let values = combinedValue.split("|");
+
+        // Insert the values into HTML elements with the ids 'value1' and 'value2'
+        $('#value1').text(value1);
+        $('#value2').text(values[0]);
+        $('#value3').text(values[1]);
+    });
+</script>
+}

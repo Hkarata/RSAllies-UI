@@ -64,13 +64,26 @@ namespace RSAllies
 
 		public async Task<Result<List<FilteredSessionDto>>?> GetFilteredSessionsAsync(string region, DateTime date)
 		{
-			string dateInISO8601Format = date.ToString("yyyy-MM-ddTHH:mm:ssZ");
-			var response = await httpClient.GetAsync($"/api/sessions/filter/region/{region}/date/{dateInISO8601Format}");
+			var dateInIso8601Format = date.ToString("yyyy-MM-ddTHH:mm:ssZ");
+			var response = await httpClient.GetAsync($"/api/sessions/filter/region/{region}/date/{dateInIso8601Format}");
 			var content = await response.Content.ReadAsStringAsync();
 			if (!response.IsSuccessStatusCode) return null;
 			var result = JsonConvert.DeserializeObject<Result<List<FilteredSessionDto>>>(content)!;
 			return result;
 
+		}
+
+		public async Task<Result<BookingDto>?> GetCurrentUserBooking(Guid id)
+		{
+			var response = await httpClient.GetAsync($"/api/bookings/user/{id}/current-booking");
+			var content = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode)
+			{
+				var result = JsonConvert.DeserializeObject<Result<BookingDto>>(content)!;
+				return result;
+			}
+
+			return null;
 		}
 	}
 }

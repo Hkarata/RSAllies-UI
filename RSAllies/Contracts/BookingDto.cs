@@ -2,9 +2,9 @@
 {
 	public record BookingDto
 	{
-		public Guid UserId { get; set; }
-		public Guid SessionId { get; set; }
-		public DateTime BookingDate { get; set; }
-		public string Status { get; set; } = string.Empty;
+		public Guid Id { get; set; }
+		public string? VenueName { get; set; }
+		public string? VenueAddress { get; set; }
+		public DateTime SessionDate { get; set; }
 	}
 }
