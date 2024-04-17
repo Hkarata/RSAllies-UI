@@ -9,7 +9,7 @@ namespace RSAllies.Pages
 	{
 		public UserDto? UserData { get; set; }
 		public string StatusMessage { get; set; } = string.Empty;
-		
+
 		public BookingDto? CurrentBooking { get; set; }
 
 		public async Task<IActionResult> OnGetAsync()
@@ -23,9 +23,9 @@ namespace RSAllies.Pages
 			UserData = JsonConvert.DeserializeObject<UserDto>(session);
 
 			StatusMessage = $"Welcome!, {UserData?.FirstName} {UserData?.LastName}";
-			
+
 			var result = await apiClient.GetCurrentUserBooking(UserData!.Id).ConfigureAwait(false);
-			
+
 			if (result != null)
 			{
 				CurrentBooking = result.Value;
