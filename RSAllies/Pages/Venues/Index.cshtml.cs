@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft.Json;
 using RSAllies.Contracts;
 
 namespace RSAllies.Pages.Venues;
 
 public class IndexModel(ApiClient apiClient) : PageModel
 {
-	public Guid? VenueId { get; private set; }
+    public UserDto? UserData { get; set; }
+    public Guid? VenueId { get; private set; }
 
 	public string? StatusMessage { get; set; }
 
@@ -22,5 +24,7 @@ public class IndexModel(ApiClient apiClient) : PageModel
 		{
 			Sessions = result.Value;
 		}
-	}
+        var session = HttpContext.Session.GetString("UserSession");
+        UserData = JsonConvert.DeserializeObject<UserDto>(session!);
+    }
 }

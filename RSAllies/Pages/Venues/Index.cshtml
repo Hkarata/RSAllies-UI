@@ -5,10 +5,150 @@
     ViewData["Title"] = "Venue";
 }
 <partial name="Shared/_StatusMessage" for="StatusMessage"/>
-<p id="value1"></p>
-<p id="value2"></p>
-<p id="value3"></p>
+<div class="container-fluid">
 
+    <div class="row align-items-center">
+        <div class="col-md-6 order-md-first mb-2">
+            <img src="/images/venue.jpg" class="img-fluid rounded-start rounded-end" alt="Image description">
+        </div>
+        <div class="col-md-6">
+            <h4 id="value2" style="font-family:'Segoe Script'"></h4>
+            <h4 id="value3" style="font-family:'Segoe Script'"></h4>
+            <br/>
+            <p class="english">Reserve your spot, show up for the exam, and then follow the remaining steps to obtain your license.</p>
+            <p class="swahili" style="display: none">Hifadhi nafasi yako, tokea kujibu mtihani kisha endelea na taratibu nyengine za kupata leseni.</p>
+
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <span class="english">This Week's Sessions</span>
+                    <span class="swahili" style="display: none">Nafasi za Wiki Hii</span>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse p-2 show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="container-fluid">
+                    @if (Model.Sessions is { Count: > 0 })
+                    {
+                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                            @foreach (var session in Model.Sessions.OrderBy(s => s.SessionDate).Where(s => s.SessionDate >= DateTime.Now && s.SessionDate < DateTime.Now.AddDays(7)))
+                            {
+                                <div class="col d-flex flex-column">
+                                    <div class="card border-warning h-100 bg-light">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@session.VenueName</h5>
+                                            <p class="card-text">
+                                                <span class="english">Date:</span> <span class="swahili" style="display: none">Tarehe:</span> @session.SessionDate.ToString("dd/MM/yyyy")<br>
+                                                <span class="english">Time:</span> <span class="swahili" style="display: none">Muda:</span> @session.SessionDate.ToString("HH:mm")<br>
+                                            </p>
+                                            <form method="dialog">
+                                                <input type="hidden" name="region" value="@session.VenueName" />
+                                                <input type="hidden" name="date" value="@session.SessionDate" />
+                                                <input type="hidden" name="time" value="@session.SessionDate" />
+                                                <input type="submit" value="Book" class="btn btn-primary book-btn" data-user-id="@Model!.UserData!.Id" data-session-id="@session.Id" data-venue-name="@session.VenueName" data-session-date="@session.SessionDate.ToString("dd/MM/yyyy")" data-session-time="@session.SessionDate.ToString("HH:mm")" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="english">No sessions are available in the next weeks.</p>
+                        <p class="swahili" style="display: none">Hakuna nafasi zilizopo kwa wiki zijazo.</p>
+                    }
+                    </<div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="english">Sessions in Months Range</span>
+                    <span class="swahili" style="display: none">Nafasi ndani Mwezi </span>
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse p-2 collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                
+                <div class="container-fluid">
+                    @if (Model.Sessions is { Count: > 0 })
+                    {
+                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                            @foreach (var session in Model.Sessions.OrderBy(s => s.SessionDate).Where(s => s.SessionDate > DateTime.Today.AddDays(7) && s.SessionDate <= DateTime.Today.AddMonths(1)))
+                            {
+                                <div class="col d-flex flex-column">
+                                    <div class="card border-warning h-100 bg-light">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@session.VenueName</h5>
+                                            <p class="card-text">
+                                                <span class="english">Date:</span> <span class="swahili" style="display: none">Tarehe:</span> @session.SessionDate.ToString("dd/MM/yyyy")<br>
+                                                <span class="english">Time:</span> <span class="swahili" style="display: none">Muda:</span> @session.SessionDate.ToString("HH:mm")<br>
+                                            </p>
+                                            <form method="dialog">
+                                                <input type="hidden" name="region" value="@session.VenueName" />
+                                                <input type="hidden" name="date" value="@session.SessionDate" />
+                                                <input type="hidden" name="time" value="@session.SessionDate" />
+                                                <input type="submit" value="Book" class="btn btn-primary book-btn" data-user-id="@Model!.UserData!.Id" data-session-id="@session.Id" data-venue-name="@session.VenueName" data-session-date="@session.SessionDate.ToString("dd/MM/yyyy")" data-session-time="@session.SessionDate.ToString("HH:mm")" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="english">No sessions are available in the next weeks.</p>
+                        <p class="swahili" style="display: none">Hakuna nafasi zilizopo kwa wiki zijazo.</p>
+                    }
+                    </<div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div style="font-family:Bahnschrift" class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirm Booking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to book a session <span class="text-warning" id="venue-name"></span> on <span class="text-warning" id="session-date"></span> at <span class="text-warning" id="session-time"></span>?</p>
+                <p class="english msg text-danger">Please note that you can only book one session at a time.</p>
+                <div class="swahili msg text-danger" style="display:none">Huwezi kuweka nafasi nyingine kama tayari unayo</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form method="dialog">
+                    <input type="hidden" name="region" value="" id="hidden-venue-name" />
+                    <input type="hidden" name="date" value="" id="hidden-session-date" />
+                    <input type="hidden" name="time" value="" />
+                    <input type="hidden" name="availableSlots" value="" />
+                    <button type="submit" class="btn btn-primary" id="bookNowButton">Book Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @section Scripts {
@@ -26,5 +166,91 @@
         $('#value2').text(values[0]);
         $('#value3').text(values[1]);
     });
+
+        $(document).ready(function () {
+
+            $('.book-btn').click(function () {
+                let userId = $(this).data('userId');
+                let sessionId = $(this).data('sessionId');
+                let venueName = $(this).data('venueName');
+                let sessionDate = $(this).data('sessionDate');
+                let sessionTime = $(this).data('sessionTime');
+
+                sessionStorage.setItem('userId', userId);
+                sessionStorage.setItem('sessionId', sessionId);
+                sessionStorage.setItem('sessionDate', sessionDate);
+
+                $('#venue-name').text(venueName);
+                $('#session-date').text(sessionDate);
+                $('#session-time').text(sessionTime);
+                $('#hidden-venue-name').val(venueName);
+                $('#hidden-session-date').val(sessionDate);
+
+                $('.msg').hide();
+                $('#confirmationModal').modal('show');
+            });
+
+            $("#bookNowButton").click(function (event) {
+                event.preventDefault(); // Prevent the form from submitting via the browser
+
+                // Check if the 'HasBooked' cookie exists and has not expired
+                let hasBookedCookie = document.cookie.split('; ').find(row => row.startsWith('HasBooked'));
+                if (hasBookedCookie) {
+                    $('.msg').show();
+                    return;
+                }
+
+                // Read data from sessionStorage
+                let userId = sessionStorage.getItem('userId');
+                let sessionId = sessionStorage.getItem('sessionId');
+
+                // Get the current date and time in the required format
+                let bookingDate = new Date().toISOString();
+
+                // Set the status to "BOOKED"
+                let status = "BOOKED";
+
+                // Create a JavaScript object that matches the structure of your BookingDto
+                let bookingDto = {
+                    UserId: userId,
+                    SessionId: sessionId,
+                    BookingDate: bookingDate,
+                    Status: status
+                };
+
+                $.ajax({
+                    url: 'http://localhost:5000/api/bookings', // Replace 'YourEndpoint' with your actual API endpoint
+                    type: 'POST',
+                    data: JSON.stringify(bookingDto), // Convert the JavaScript object to a JSON string
+                    contentType: 'application/json',   // Set the data type to JSON
+                }).done(function (data) {
+
+                    // Handle success here
+                    window.location.href = "/home"; // Navigate to the home page
+
+                    // Delete the values from sessionStorage
+                    sessionStorage.removeItem('userId');
+                    sessionStorage.removeItem('sessionId');
+
+                    // Read the session date from sessionStorage and convert it to the correct format
+                    let sessionDateStr = sessionStorage.getItem('sessionDate');
+                    let sessionDateParts = sessionDateStr.split("/");
+                    let sessionDate = new Date(sessionDateParts[2], sessionDateParts[1] - 1, sessionDateParts[0]);
+
+                    // Write a cookie that expires on the session date
+                    document.cookie = "HasBooked=true; expires=" + sessionDate.toUTCString() + "; path=/";
+
+                    //Delete date value in sessionStorage
+                    sessionStorage.removeItem('sessionDate');
+
+                }).fail(function (xhr, status, error) {
+                    // Handle failure here
+                    alert("An error occurred: " + error); // Alert the error
+                });
+            });
+
+
+
+        });
 </script>
 }

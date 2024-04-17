@@ -5,14 +5,36 @@
 {
     <ul class="navbar-nav flex-grow-1">
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Home">Home</a>
+            <a class="nav-link text-dark" asp-area="" asp-page="/Home">
+                <span class="english">Home</span>
+                <span class="swahili" style="display:none">Nyumbani</span>
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/Index">Booking</a>
+            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/Index">
+                <span class="english">Booking</span>
+                <span class="swahili" style="display:none">Hifadhi Nafasi</span>
+             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/Search">Find a Session</a>
+            <a class="nav-link text-dark" asp-area="" asp-page="/Booking/Search">
+                <span class="english">Find a Session</span>
+                <span class="swahili" style="display:none">Tafuta Nafasi</span>
+            </a>
         </li>
+    </ul>
+    <ul class="navbar-nav">
+        <!-- Example split danger button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger">Language</button>
+            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li style="cursor: pointer"><span class="dropdown-item language">English</span></li>
+                <li style="cursor: pointer"><span class="dropdown-item language">Swahili</span></li>
+            </ul>
+        </div>
     </ul>
 }
 else

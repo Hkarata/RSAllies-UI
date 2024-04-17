@@ -61,8 +61,12 @@
                     Hali: <span class="badge bg-success">Imehifadhiwa &amp; Nakuthibitishwa</span>
                 </li>
             </ul>
-            <div class="mt-auto"> <a href="#" class="btn btn-primary">View Details</a>
-            </div>
+                @if (DateTime.Today < Model.CurrentBooking?.SessionDate)
+                {
+                    <div class="mt-auto">
+                        <a href="/Test" class="btn btn-primary">Attempt Test</a>
+                    </div>
+                }
         </div>
     </div>
     }
