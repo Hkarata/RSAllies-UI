@@ -1,4 +1,5 @@
-﻿using Wolverine;
+﻿using RSAllies.Marker;
+using Wolverine;
 using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,8 @@ builder.Host.UseWolverine(x =>
         options.Password = "karata";
     }).AutoProvision();
 });
+
+builder.Services.AddHttpClient<ApiClient>(client => client.BaseAddress = new Uri("http://localhost:5000"));
 
 var app = builder.Build();
 

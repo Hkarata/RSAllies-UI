@@ -1,6 +1,7 @@
 ﻿namespace RSAllies.Data.Contracts;
 
-public class AnswerDto
+public record AnswerDto
 {
-    
+    public Guid QuestionId { get; set; }    
+    public Guid ChoiceId { get; set; }
 }

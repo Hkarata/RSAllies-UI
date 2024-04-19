@@ -31,11 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RSAllies.Contracts\RSAllies.Contracts.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Contracts\" />
+    <ProjectReference Include="..\RSAllies.Data\RSAllies.Data.csproj" />
   </ItemGroup>
 
 </Project>

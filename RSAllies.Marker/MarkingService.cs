@@ -1,6 +1,23 @@
-﻿namespace RSAllies.Marker;
+﻿using RSAllies.Data.Contracts;
 
-public class MarkingService
+namespace RSAllies.Marker;
+
+public static class MarkingService
 {
-    
+    public static int Mark(List<AnswerDto> answers, List<ResponseDto> responses)
+    {
+        var score = 0;
+
+        foreach (var response in responses)
+        {
+            var correctAnswer = answers.FirstOrDefault(a => a.QuestionId == response.QuestionId);
+
+            if (correctAnswer != null && correctAnswer.ChoiceId == response.SelectedChoiceId)
+            {
+                score++;
+            }
+        }
+
+        return score;
+    }
 }

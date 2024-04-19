@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using RSAllies;
 using RSAllies.Authentication;
-using RSAllies.Contracts.Contracts;
+using RSAllies.Data.Contracts;
 using RSAllies.Extensions;
 using Wolverine;
 using Wolverine.RabbitMQ;

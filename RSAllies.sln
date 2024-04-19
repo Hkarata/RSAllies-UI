@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.34804.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies", "RSAllies\RSAllies.csproj", "{F3639295-68A9-49A9-BED7-EC0E1E27ABCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAllies.Contracts", "RSAllies.Contracts\RSAllies.Contracts.csproj", "{47A0B3FD-7B6D-4E9B-8567-E3C533D3370F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAllies.Data", "RSAllies.Data\RSAllies.Data.csproj", "{47A0B3FD-7B6D-4E9B-8567-E3C533D3370F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAllies.Marker", "RSAllies.Marker\RSAllies.Marker.csproj", "{D661EED0-932D-4A27-B0A6-23EC17395809}"
 EndProject

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using RSAllies.Contracts.Contracts;
+using RSAllies.Data.Contracts;
 
 namespace RSAllies.Extensions;
 

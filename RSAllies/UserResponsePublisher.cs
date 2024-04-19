@@ -1,4 +1,4 @@
-﻿using RSAllies.Contracts.Contracts;
+﻿using RSAllies.Data.Contracts;
 using Wolverine;
 
 namespace RSAllies;

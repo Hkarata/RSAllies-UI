@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using RSAllies.Contracts.Contracts;
-using RSAllies.HelperTypes;
+using RSAllies.Data.Contracts;
+using RSAllies.Data.HelperTypes;
 
 namespace RSAllies
 {
