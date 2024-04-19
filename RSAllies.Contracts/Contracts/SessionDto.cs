@@ -1,4 +1,4 @@
-﻿namespace RSAllies.Contracts;
+﻿namespace RSAllies.Contracts.Contracts;
 
 public record SessionDto
 {

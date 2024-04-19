@@ -1,0 +1,87 @@
+﻿@page
+@model EnglishModel
+@{
+    ViewData["Title"] = "Test in English";
+}
+<div class="container-fluid">
+
+    <div class="card rounded shadow mb-3" style="max-width: 600px; margin: auto;">
+        <div class="card-body">
+            <h4 class="question" style="font-weight: bold; color: #333;">What is the capital of France?</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="q1" id="q1a" value="a">
+                <label class="form-check-label" for="q1a">London</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="q1" id="q1b" value="b">
+                <label class="form-check-label" for="q1b">Berlin</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="q1" id="q1c" value="c">
+                <label class="form-check-label" for="q1c">Paris (Correct)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="q1" id="q1d" value="d">
+                <label class="form-check-label" for="q1d">Rome</label>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="countdown-card fixed-top">
+    <div id="countdown"></div>
+</div>
+
+<style>
+    .countdown-card {
+        width:fit-content;
+        border-radius: 8px;
+        padding: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 4rem;
+        left: auto;
+        right: 1rem;
+        z-index: 100; /* Ensure the card stays on top of other elements */
+        font-family: 'Segoe Print';
+        font-size: 25px;
+    }
+
+        .countdown-card h1 {
+            margin-bottom: 0; /* Remove default margin for better spacing */
+        }
+
+</style>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            var timeInMinutes = 30;
+            var timeInSeconds = timeInMinutes * 60;
+
+            var updateCountdown = function () {
+                var minutes = Math.floor(timeInSeconds / 60);
+                var seconds = timeInSeconds % 60;
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                $("#countdown").html(minutes + ":" + seconds);
+
+                if (timeInSeconds === 0) {
+                    clearInterval(countdownInterval);
+                    $("#countdown").html("Time's Up!");
+                }
+
+                timeInSeconds--;
+            };
+
+            var countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+        });
+    </script>
+
+}
