@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RSAllies.HelperTypes
+namespace RSAllies.Data.HelperTypes
 {
 	public class Result<TValue> : Result
 	{

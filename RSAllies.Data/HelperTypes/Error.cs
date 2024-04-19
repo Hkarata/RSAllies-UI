@@ -1,4 +1,4 @@
-﻿namespace RSAllies.HelperTypes
+﻿namespace RSAllies.Data.HelperTypes
 {
 	public record class Error(String Code, String Message)
 	{

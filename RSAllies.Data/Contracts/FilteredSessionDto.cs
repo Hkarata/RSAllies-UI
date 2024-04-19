@@ -1,4 +1,4 @@
-﻿namespace RSAllies.Contracts.Contracts;
+﻿namespace RSAllies.Data.Contracts;
 
 public record FilteredSessionDto
 {
