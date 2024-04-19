@@ -5,20 +5,21 @@ using RSAllies.Data.Contracts;
 
 namespace RSAllies.Pages.Test
 {
-    public class SwahiliModel(ApiClient apiClient, UserResponsePublisher publisher) : PageModel
+    public class SwahiliModel(ApiClient apiClient/*, UserResponsePublisher publisher*/) : PageModel
     {
         public UserDto? UserData { get; set; }
         
         public bool IsPosted;
         public List<QuestionDto>? Questions { get; set; }
         
-        public async Task OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            var session = HttpContext.Session.GetString("UserSession");
+            if (string.IsNullOrEmpty(session)) return RedirectToPage("/Login");
+            UserData = JsonConvert.DeserializeObject<UserDto>(session!);
             var result = await apiClient.GetSwahiliQuestions();
             Questions = result?.Value;
-            
-            var session = HttpContext.Session.GetString("UserSession");
-            UserData = JsonConvert.DeserializeObject<UserDto>(session!);
+            return Page();
         }
 
 
@@ -42,13 +43,16 @@ namespace RSAllies.Pages.Test
                 responses.Add(response);
             }
 
+            var session = HttpContext.Session.GetString("UserSession");
+            UserData = JsonConvert.DeserializeObject<UserDto>(session!);
+
             var userResponse = new UserResponseDto
             {
                 UserId = UserData!.Id,
                 Responses = responses
             };
 
-            await publisher.PublishUserResponses(userResponse);
+            //await publisher.PublishUserResponses(userResponse);
 
         }
     }

@@ -25,7 +25,7 @@ namespace RSAllies.Pages.Booking
 			var session = HttpContext.Session.GetString("UserSession");
 			if (string.IsNullOrEmpty(session))
 			{
-				return RedirectToPage("./Login");
+				return RedirectToPage("/Login");
 			}
 			UserData = JsonConvert.DeserializeObject<UserDto>(session!);
 

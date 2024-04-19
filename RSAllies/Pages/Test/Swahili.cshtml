@@ -32,8 +32,8 @@
         {
             <div class="myThing card">
                 <div class="card-body">
-                    <h5 class="text-warning">Oops! Time is Up</h5>
-                    <p>Please Click the submit button, to submit your answer, <span class="text-danger">otherwise your progress will be lost</span></p>
+                    <h5 class="text-warning">Samahani! Muda umekwisha</h5>
+                    <p>Tafadhali bonyeza kitufe cha kutuma, ili kutuma majibu yako, <span class="text-danger">vinginevyo maendeleo yako yatapotea</span></p>
                     <input type="submit" class="btn btn-primary w-100" value="Submit"/>
                 </div>
             </div>
@@ -43,8 +43,9 @@
         {
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-success">Congratulations! for Attempting the Exam.</h5>
-                    <by>You put your knowledge to the test, and that's a big win for Road safety, by testing driver thoeritically, this initiative aims to make roads safer.</by>
+                    <h5 class="text-success">Hongera! umemaliza Mtihani.</h5>
+                    <p>Umejaribu mtihani wako, na hilo ni ushindi mkubwa kwa usalama wa barabarani, kwa kufanya mtihani wa dereva kwa nadharia, hatua hii inalenga kufanya barabara kuwa salama zaidi.</p>
+                    <a href="/Scores" class="btn btn-success">Bofya hapa kuona matokeo yako</a>
                 </div>
             </div>
         }
@@ -144,6 +145,35 @@
             // Save choices to local storage when they're selected
             $("input[type='radio']").on('change', function() {
                 localStorage.setItem(this.name, this.value);
+            });
+
+            $(".yourThing").on("click", function () {
+
+                timeInSeconds = 0;
+
+
+                // Add your event handling code here
+                for (let key in localStorage) {
+                    // Check if the key is not present in the keysToKeep array
+                    if (!keysToKeep.includes(key)) {
+                        // Remove the key from localStorage
+                        localStorage.removeItem(key);
+                    }
+                }
+            });
+
+            $(".myThing").on("click", function () {
+
+                timeInSeconds = 0;
+
+                // Add your event handling code here
+                for (let key in localStorage) {
+                    // Check if the key is not present in the keysToKeep array
+                    if (!keysToKeep.includes(key)) {
+                        // Remove the key from localStorage
+                        localStorage.removeItem(key);
+                    }
+                }
             });
             
             
