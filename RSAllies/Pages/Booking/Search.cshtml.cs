@@ -32,12 +32,24 @@ namespace RSAllies.Pages.Booking
 			return Page();
 		}
 
-		public async Task OnPostAsync()
+		public async Task<IActionResult> OnPostAsync()
 		{
-			var submittedForm = Request.Form["submittedForm"]; // Access form name
+            var session = HttpContext.Session.GetString("UserSession");
+            if (string.IsNullOrEmpty(session))
+            {
+                return RedirectToPage("/Login");
+            }
+            UserData = JsonConvert.DeserializeObject<UserDto>(session!);
+
+            var submittedForm = Request.Form["submittedForm"]; // Access form name
 			if (submittedForm == "Swahili")
 			{
 				var result = await apiClient.GetFilteredSessionsAsync(SFilter!.Region, SFilter!.Date);
+				if(result == null)
+                {
+                    StatusMessage = "There are no sessions found. Hamna nafasi";
+                    return Page();
+                }
 				Sessions = result!.Value;
 			}
 			else
@@ -45,8 +57,9 @@ namespace RSAllies.Pages.Booking
 				var result = await apiClient.GetFilteredSessionsAsync(Filter!.Region, Filter!.Date);
 				Sessions = result!.Value;
 			}
-			var session = HttpContext.Session.GetString("UserSession");
-			UserData = JsonConvert.DeserializeObject<UserDto>(session!);
+
+			return Page();
+
 		}
 	}
 }

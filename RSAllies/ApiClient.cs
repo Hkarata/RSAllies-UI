@@ -69,6 +69,7 @@ namespace RSAllies
 			var content = await response.Content.ReadAsStringAsync();
 			if (!response.IsSuccessStatusCode) return null;
 			var result = JsonConvert.DeserializeObject<Result<List<FilteredSessionDto>>>(content)!;
+			if(result.IsFailure) return null;
 			return result;
 
 		}

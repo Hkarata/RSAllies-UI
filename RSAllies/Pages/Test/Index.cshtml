@@ -57,13 +57,129 @@
       <h2 class="swahili">Uko tayari kuanza?</h2>
       <p class="english">Please choose the language of the exam you are comfortable with!</p>
       <p class="swahili">Tafadhali chagua lugha ya mtihani ambayo unajisikia huru nayo!</p>
-      <a href="/Test/English" class="btn btn-primary">
+      <a href="/Test/English" class="btn btn-primary exam-link">
           Exam in English
       </a>
-      <a href="/Test/Swahili" class="btn btn-primary">
+      <a href="/Test/Swahili" class="btn btn-primary swahili-link">
           Mtihani kwa Kiswahili
       </a>
     </div>
   </div>
 
 </div>
+
+
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="passwordModalLabel">Enter Test Access Key</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="passwordForm">
+                    <div class="mb-3">
+                        <label for="passwordInput" class="form-label">Access Key</label>
+                        <input type="password" class="form-control" id="passwordInput" required>
+                        <div class="invalid-feedback">
+                            Password is incorrect. Please try again.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="pdModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="passwordModalLabel">Ingiza Neno la Siri la Mtihani</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="pdForm">
+                    <div class="mb-3">
+                        <label for="passwordInput" class="form-label">Neno la Siri</label>
+                        <input type="password" class="form-control" id="pdInput" required>
+                        <div class="invalid-feedback">
+                            Neno la siri sio sahihi. Tafadhali jaribu tena.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tuma</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function() {
+          const passwordModal = $('#passwordModal');
+          const examLink = $('.exam-link');
+          const passwordForm = $('#passwordForm');
+          const passwordInput = $('#passwordInput');
+
+          examLink.click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            passwordModal.modal('show');
+          });
+
+          passwordForm.submit(function(event) {
+            event.preventDefault(); // Prevent form submission
+            const enteredPassword = passwordInput.val();
+
+            // Replace with your secure password validation logic here
+            // (e.g., fetch password from server and compare)
+            if (enteredPassword === 'password') { // Replace with actual password
+              window.location.href = '/Test/English'; // Redirect to exam page
+              passwordModal.modal('hide');
+            } else {
+              passwordInput.addClass('is-invalid');
+            }
+          });
+
+          passwordInput.on('input', function() {
+            passwordInput.removeClass('is-invalid');
+          });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+          const passwordModal = $('#pdModal');
+          const examLink = $('.swahili-link');
+          const passwordForm = $('#pdForm');
+          const passwordInput = $('#pdInput');
+
+          examLink.click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            passwordModal.modal('show');
+          });
+
+          passwordForm.submit(function(event) {
+            event.preventDefault(); // Prevent form submission
+            const enteredPassword = passwordInput.val();
+
+            // Replace with your secure password validation logic here
+            // (e.g., fetch password from server and compare)
+            if (enteredPassword === 'password') { // Replace with actual password
+              window.location.href = '/Test/Swahili'; // Redirect to exam page
+              passwordModal.modal('hide');
+            } else {
+              passwordInput.addClass('is-invalid');
+            }
+          });
+
+          passwordInput.on('input', function() {
+            passwordInput.removeClass('is-invalid');
+          });
+        });
+    </script>
+
+}
