@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RSAllies.Contracts;
+using RSAllies.Contracts.Contracts;
 using RSAllies.Models.English;
 using RSAllies.Models.Swahili;
 

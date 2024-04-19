@@ -3,3 +3,151 @@
 @{
     ViewData["Title"] = "Mtihani Kwa Kiswahili";
 }
+<div class="container-fluid">
+
+    <form method="post">
+        <div class="questionContainer">
+
+            @if (Model.Questions is { Count: > 0 })
+            {
+                foreach (var question in Model.Questions)
+                {
+                    <div class="card rounded shadow mb-3">
+                        <div class="card-body">
+                            <h4 class="question" style="font-weight: bold; color: #333;">@question.QuestionText</h4>
+                            @foreach (var choice in question.Choices!)
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="@question.Id" id="@question.Id" value="@choice.Id">
+                                    <label class="form-check-label" for="@question.Id">@choice.ChoiceText</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+        @if (!Model.IsPosted)
+        {
+            <div class="myThing card">
+                <div class="card-body">
+                    <h5 class="text-warning">Oops! Time is Up</h5>
+                    <p>Please Click the submit button, to submit your answer, <span class="text-danger">otherwise your progress will be lost</span></p>
+                    <input type="submit" class="btn btn-primary w-100" value="Submit"/>
+                </div>
+            </div>
+            <input type="submit" class="yourThing btn btn-primary w-100" value="Submit"/>
+        }
+        else
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="text-success">Congratulations! for Attempting the Exam.</h5>
+                    <by>You put your knowledge to the test, and that's a big win for Road safety, by testing driver thoeritically, this initiative aims to make roads safer.</by>
+                </div>
+            </div>
+        }
+        
+    </form>
+
+</div>
+
+<div class="countdown-card fixed-top">
+    <div id="countdown" style="font-weight: bold;" class="text-warning"></div>
+</div>
+
+<style>
+    .countdown-card {
+        width:fit-content;
+        border-radius: 8px;
+        padding: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 4rem;
+        left: auto;
+        right: 1rem;
+        z-index: 100; /* Ensure the card stays on top of other elements */
+        font-family: 'Segoe Print', serif;
+        font-size: 25px;
+    }
+
+        .countdown-card h1 {
+            margin-bottom: 0; /* Remove default margin for better spacing */
+        }
+
+</style>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            let timeInMinutes = 30;
+            let timeInSeconds = timeInMinutes * 60;
+            let questionContainer = $(".questionContainer");
+            let countDownCard = $(".countdown-card");
+            let keysToKeep = ["isEnglish"];
+            let myThing = $(".myThing");
+            let yourThing = $(".yourThing");
+            
+            myThing.hide();
+
+            let storedTime = localStorage.getItem("countdownTime");
+            if (storedTime) {
+                // If storedTime exists, parse it back to a number
+                timeInSeconds = parseInt(storedTime);
+            }
+
+            let updateCountdown = function () {
+                let minutes = Math.floor(timeInSeconds / 60);
+                let seconds = timeInSeconds % 60;
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                $("#countdown").html(minutes + ":" + seconds);
+
+                if (timeInSeconds <= 0) {
+                    // Handle timer expiration
+                    questionContainer.hide(); // Hide all question cards
+                    countDownCard.hide();
+                    clearTimeout(countdownInterval);
+                    yourThing.hide();
+                    myThing.show();
+                    // You can add additional logic here, like displaying a message or submitting the quiz automatically
+
+                    for (let key in localStorage) {
+                        // Check if the key is not present in the keysToKeep array
+                        if (!keysToKeep.includes(key)) {
+                            // Remove the key from localStorage
+                            localStorage.removeItem(key);
+                        }
+                    }
+                } 
+
+                timeInSeconds--;
+
+                // Update localStorage with the remaining time every second
+                localStorage.setItem("countdownTime", timeInSeconds);
+            };
+
+            let countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            $("input[type='radio']").each(function() {
+                var storedValue = localStorage.getItem(this.name);
+                if (storedValue) {
+                    this.checked = this.value === storedValue;
+                }
+            });
+
+            // Save choices to local storage when they're selected
+            $("input[type='radio']").on('change', function() {
+                localStorage.setItem(this.name, this.value);
+            });
+            
+            
+        });
+    </script>
+
+}

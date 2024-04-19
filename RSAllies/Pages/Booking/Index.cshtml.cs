@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using RSAllies.Contracts;
+using RSAllies.Contracts.Contracts;
 
 namespace RSAllies.Pages.Booking;
 

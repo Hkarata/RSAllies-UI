@@ -1,6 +1,12 @@
-﻿namespace RSAllies;
+﻿using RSAllies.Contracts.Contracts;
+using Wolverine;
 
-public class UserResponsePublisher
+namespace RSAllies;
+
+public class UserResponsePublisher(IMessageBus messageBus)
 {
-    
+    public async Task PublishUserResponses(UserResponseDto userResponse)
+    {
+        await messageBus.SendAsync(userResponse);
+    }
 }

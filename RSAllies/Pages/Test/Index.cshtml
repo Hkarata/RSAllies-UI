@@ -1,4 +1,69 @@
 ﻿@page
 @model IndexModel
 @{
+    ViewData["Title"] = "Test";
 }
+
+<div class="container-fluid">
+
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-6 order-md-first mb-2">
+            <img src="/images/timed-test.jpg" class="img-fluid rounded-start rounded-end" alt="Image description">
+        </div>
+        <div class="col-md-6">
+            <h4 class="english" style="font-family:'Segoe Script',serif">Driving Theoretical Test.</h4>
+            <h4 class="swahili" style="font-family:'Segoe Script',serif;display: none">Mtihani wa Nadharia wa Udereva.</h4>
+            <br/>
+            <p class="english">Important Information before the exam:</p>
+            <p class="swahili" style="display: none">Taafia muhimu kabla ya mtihani:</p>
+
+            
+            <ul>
+                <li>
+                    <p class="english text-primary">The test has 25 questions.</p>
+                    <p class="swahili text-primary" style="display: none">Mtihani una maswali 30.</p>
+                </li>
+                <li>
+                    <p class="english text-warning">You have 30 minutes to complete the test.</p>
+                    <p class="swahili text-warning" style="display: none">Una dakika 30 kumaliza mtihani.</p>
+                </li>
+                <li>
+                    <p class="english text-success">You must score at least 80% to pass the test.</p>
+                    <p class="swahili text-success" style="display: none">Lazima upate angalau 80% kufaulu mtihani.</p>
+                </li>
+                <li>
+                    <p class="english text-primary">Choose the language of your test.</p>
+                    <p class="swahili text-primary" style="display: none">Chagua lugha ya mtihani wako</p>
+                </li>
+                <li>
+                    <p class="english text-warning">You can only take the test if you are logged in.</p>
+                    <p class="swahili text-warning" style="display: none">Unaweza kufanya mtihani ikiwa tu umeingia kwenye mfumo.</p>
+                    </li>
+            </ul>
+
+
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-6 beautiful-col">
+      <h1 class="english text-warning">Warning!</h1>
+      <h1 class="swahili text-warning">Angalizo!</h1>
+      <p class="english text-danger" style="font-size:24px">You will not be able to change the language once you start the exam</p>
+      <p class="swahili text-danger" style="font-size:24px">Hutoweza kubadilisha lugha mara baada ya kuanza mtihani</p>
+    </div>
+    <div class="col-md-6 beautiful-col">
+      <h2 class="english">Ready to Start?</h2>
+      <h2 class="swahili">Uko tayari kuanza?</h2>
+      <p class="english">Please choose the language of the exam you are comfortable with!</p>
+      <p class="swahili">Tafadhali chagua lugha ya mtihani ambayo unajisikia huru nayo!</p>
+      <a href="/Test/English" class="btn btn-primary">
+          Exam in English
+      </a>
+      <a href="/Test/Swahili" class="btn btn-primary">
+          Mtihani kwa Kiswahili
+      </a>
+    </div>
+  </div>
+
+</div>

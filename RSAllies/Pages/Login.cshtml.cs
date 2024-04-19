@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RSAllies.Authentication;
-using RSAllies.Contracts;
+using RSAllies.Contracts.Contracts;
 using RSAllies.Models.English;
 using RSAllies.Models.Swahili;
 

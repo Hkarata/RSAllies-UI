@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
-using RSAllies.Contracts;
+using RSAllies.Contracts.Contracts;
 
 namespace RSAllies.Pages.Venues;
 

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using RSAllies.Contracts;
+using RSAllies.Contracts.Contracts;
 using RSAllies.HelperTypes;
 
 namespace RSAllies
@@ -77,13 +77,29 @@ namespace RSAllies
 		{
 			var response = await httpClient.GetAsync($"/api/bookings/user/{id}/current-booking");
 			var content = await response.Content.ReadAsStringAsync();
-			if (response.IsSuccessStatusCode)
-			{
-				var result = JsonConvert.DeserializeObject<Result<BookingDto>>(content)!;
-				return result;
-			}
+			if (!response.IsSuccessStatusCode) return null;
+			var result = JsonConvert.DeserializeObject<Result<BookingDto>>(content)!;
+			return result;
 
-			return null;
 		}
+
+		public async Task<Result<List<QuestionDto>>?> GetQuestions()
+		{
+			var response = await httpClient.GetAsync("/api/questions");
+			var content = await response.Content.ReadAsStringAsync();
+			if (!response.IsSuccessStatusCode) return null;
+			var result = JsonConvert.DeserializeObject<Result<List<QuestionDto>>>(content);
+			return result;
+		}
+		
+		public async Task<Result<List<QuestionDto>>?> GetSwahiliQuestions()
+		{
+			var response = await httpClient.GetAsync("/api/questions/swahili");
+			var content = await response.Content.ReadAsStringAsync();
+			if (!response.IsSuccessStatusCode) return null;
+			var result = JsonConvert.DeserializeObject<Result<List<QuestionDto>>>(content);
+			return result;
+		}
+
 	}
 }

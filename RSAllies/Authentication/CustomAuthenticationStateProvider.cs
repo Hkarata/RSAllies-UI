@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Newtonsoft.Json;
-using RSAllies.Contracts;
 using System.Security.Claims;
+using RSAllies.Contracts.Contracts;
 
 namespace RSAllies.Authentication
 {

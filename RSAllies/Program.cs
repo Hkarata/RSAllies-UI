@@ -1,11 +1,31 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using RSAllies;
 using RSAllies.Authentication;
+using RSAllies.Contracts.Contracts;
 using RSAllies.Extensions;
+using Wolverine;
+using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Host.UseWolverine(options =>
+{
+	options.PublishMessage<UserResponseDto>()
+		.ToRabbitExchange("userAnswers-exc", exchange =>
+		{
+			exchange.BindQueue("userAnswers-queue", "exchange2userAnswers");
+		});
+	options.UseRabbitMq(x =>
+	{
+		x.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
+		x.UserName = "heri";
+		x.Password = "karata";
+	}).AutoProvision();
+});
+
+builder.Services.AddScoped<UserResponsePublisher>();
+
 builder.Services.AddSession();
 
 builder.Services.AddHttpContextAccessor();
