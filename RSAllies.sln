@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies", "RSAllies\RSAlli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.Data", "RSAllies.Data\RSAllies.Data.csproj", "{47A0B3FD-7B6D-4E9B-8567-E3C533D3370F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.Marker", "RSAllies.Marker\RSAllies.Marker.csproj", "{D661EED0-932D-4A27-B0A6-23EC17395809}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAllies.AppHost", "RSAllies.AppHost\RSAllies.AppHost.csproj", "{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.AppHost", "RSAllies.AppHost\RSAllies.AppHost.csproj", "{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.ServiceDefaults", "RSAllies.ServiceDefaults\RSAllies.ServiceDefaults.csproj", "{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.PDFService", "RSAllies.PDFService\RSAllies.PDFService.csproj", "{36B6002E-8C0F-4099-9131-EDAF6D591C37}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.MarkingService", "RSAllies.MarkingService\RSAllies.MarkingService.csproj", "{4A3C9AE0-AAE5-42AE-BDD3-9084ED39D6CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +29,6 @@ Global
 		{47A0B3FD-7B6D-4E9B-8567-E3C533D3370F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47A0B3FD-7B6D-4E9B-8567-E3C533D3370F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47A0B3FD-7B6D-4E9B-8567-E3C533D3370F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D661EED0-932D-4A27-B0A6-23EC17395809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D661EED0-932D-4A27-B0A6-23EC17395809}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D661EED0-932D-4A27-B0A6-23EC17395809}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D661EED0-932D-4A27-B0A6-23EC17395809}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +37,14 @@ Global
 		{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36B6002E-8C0F-4099-9131-EDAF6D591C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B6002E-8C0F-4099-9131-EDAF6D591C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B6002E-8C0F-4099-9131-EDAF6D591C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B6002E-8C0F-4099-9131-EDAF6D591C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3C9AE0-AAE5-42AE-BDD3-9084ED39D6CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3C9AE0-AAE5-42AE-BDD3-9084ED39D6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3C9AE0-AAE5-42AE-BDD3-9084ED39D6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3C9AE0-AAE5-42AE-BDD3-9084ED39D6CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

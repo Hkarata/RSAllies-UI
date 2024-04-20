@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RSAllies.Marker\RSAllies.Marker.csproj" />
+    <ProjectReference Include="..\RSAllies.MarkingService\RSAllies.MarkingService.csproj" />
+    <ProjectReference Include="..\RSAllies.PDFService\RSAllies.PDFService.csproj" />
     <ProjectReference Include="..\RSAllies\RSAllies.csproj" />
   </ItemGroup>
 
