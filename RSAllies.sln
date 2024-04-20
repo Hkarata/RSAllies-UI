@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.Data", "RSAllies.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.Marker", "RSAllies.Marker\RSAllies.Marker.csproj", "{D661EED0-932D-4A27-B0A6-23EC17395809}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAllies.AppHost", "RSAllies.AppHost\RSAllies.AppHost.csproj", "{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.ServiceDefaults", "RSAllies.ServiceDefaults\RSAllies.ServiceDefaults.csproj", "{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{D661EED0-932D-4A27-B0A6-23EC17395809}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D661EED0-932D-4A27-B0A6-23EC17395809}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D661EED0-932D-4A27-B0A6-23EC17395809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABEFB3B-8B97-40EE-90EA-0CBB6AF68BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA103FE-3FF6-44E9-9CE1-0DF1A71DB4A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,6 +8,8 @@ using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // Add services to the container.
 //builder.Host.UseWolverine(options =>
 //{
@@ -41,6 +43,8 @@ builder.Services.AddScoped<SessionChecker>();
 builder.Services.AddHttpClient<ApiClient>(client => client.BaseAddress = new Uri("http://localhost:5000"));
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
