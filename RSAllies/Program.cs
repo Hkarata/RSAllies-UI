@@ -8,25 +8,24 @@ using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddServiceDefaults();
+//Add services to the container.
 
-// Add services to the container.
-//builder.Host.UseWolverine(options =>
-//{
-//	options.PublishMessage<UserResponseDto>()
-//		.ToRabbitExchange("userAnswers-exc", exchange =>
-//		{
-//			exchange.BindQueue("userAnswers-queue", "exchange2userAnswers");
-//		});
-//	options.UseRabbitMq(x =>
-//	{
-//		x.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
-//		x.UserName = "heri";
-//		x.Password = "karata";
-//	}).AutoProvision();
-//});
+builder.Host.UseWolverine(options =>
+{
+	options.PublishMessage<UserResponseDto>()
+		.ToRabbitExchange("userAnswers-exc", exchange =>
+		{
+			exchange.BindQueue("userAnswers-queue", "exchange2userAnswers");
+		});
+options.UseRabbitMq(x =>
+{
+	x.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
+	x.UserName = "heri";
+	x.Password = "karata";
+}).AutoProvision();
+});
 
-//builder.Services.AddScoped<UserResponsePublisher>();
+builder.Services.AddScoped<UserResponsePublisher>();
 
 builder.Services.AddSession();
 
@@ -44,7 +43,6 @@ builder.Services.AddHttpClient<ApiClient>(client => client.BaseAddress = new Uri
 
 var app = builder.Build();
 
-app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -32,7 +32,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RSAllies.Data\RSAllies.Data.csproj" />
-    <ProjectReference Include="..\RSAllies.ServiceDefaults\RSAllies.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

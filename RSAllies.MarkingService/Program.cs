@@ -4,6 +4,8 @@ using Wolverine.RabbitMQ;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
 builder.Host.UseWolverine(x =>
 {
     x.ListenToRabbitQueue("userAnswers-queue");
