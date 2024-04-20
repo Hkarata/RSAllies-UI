@@ -1,0 +1,6 @@
+@RSAllies.MarkingService_HostAddress = http://localhost:5263
+
+GET {{RSAllies.MarkingService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
