@@ -10,10 +10,21 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
     <PackageReference Include="QuestPDF" Version="2024.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="WolverineFx" Version="2.5.0" />
+    <PackageReference Include="WolverineFx.RabbitMQ" Version="2.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PDFs\" />
+    <ProjectReference Include="..\RSAllies.Data\RSAllies.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Images\safety.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\safety.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

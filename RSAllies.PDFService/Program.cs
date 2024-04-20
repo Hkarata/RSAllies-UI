@@ -1,7 +1,28 @@
+using Microsoft.Extensions.Primitives;
+using Microsoft.Net.Http.Headers;
+using RSAllies.Data.Contracts;
+using RSAllies.PDFService.Services;
+using Wolverine;
+using Wolverine.RabbitMQ;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers();
+
+
 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+
+// builder.Host.UseWolverine(options =>
+// {
+//     options.ListenToRabbitQueue("certificate-queue");
+//     options.UseRabbitMq(factory =>
+//     {
+//         factory.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
+//         factory.UserName = "heri";
+//         factory.Password = "karata";
+//     }).AutoProvision();
+// });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -18,4 +39,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapControllers();
+
 app.Run();
+
+
+
+

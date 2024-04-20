@@ -5,7 +5,7 @@ using RSAllies.Data.Contracts;
 
 namespace RSAllies.Pages.Test
 {
-    public class SwahiliModel(ApiClient apiClient/*, UserResponsePublisher publisher*/) : PageModel
+    public class SwahiliModel(ApiClient apiClient, UserResponsePublisher publisher) : PageModel
     {
         public UserDto? UserData { get; set; }
         
@@ -49,10 +49,11 @@ namespace RSAllies.Pages.Test
             var userResponse = new UserResponseDto
             {
                 UserId = UserData!.Id,
+                Name = $"{UserData.FirstName} {UserData.LastName}",
                 Responses = responses
             };
 
-            //await publisher.PublishUserResponses(userResponse);
+            await publisher.PublishUserResponses(userResponse);
 
         }
     }

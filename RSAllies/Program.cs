@@ -17,12 +17,12 @@ builder.Host.UseWolverine(options =>
 		{
 			exchange.BindQueue("userAnswers-queue", "exchange2userAnswers");
 		});
-options.UseRabbitMq(x =>
-{
-	x.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
-	x.UserName = "heri";
-	x.Password = "karata";
-}).AutoProvision();
+		options.UseRabbitMq(x =>
+		{
+			x.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
+			x.UserName = "heri";
+			x.Password = "karata";
+		}).AutoProvision();
 });
 
 builder.Services.AddScoped<UserResponsePublisher>();

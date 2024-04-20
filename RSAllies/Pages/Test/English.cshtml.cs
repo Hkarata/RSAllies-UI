@@ -5,7 +5,7 @@ using RSAllies.Data.Contracts;
 
 namespace RSAllies.Pages.Test
 {
-    public class EnglishModel(ApiClient apiClient/*, UserResponsePublisher publisher*/) : PageModel
+    public class EnglishModel(ApiClient apiClient, UserResponsePublisher publisher) : PageModel
     {
         public UserDto? UserData { get; set; }
         
@@ -16,7 +16,7 @@ namespace RSAllies.Pages.Test
         {
             var session = HttpContext.Session.GetString("UserSession");
             if (string.IsNullOrEmpty(session)) return RedirectToPage("/Login");
-            UserData = JsonConvert.DeserializeObject<UserDto>(session!);
+            UserData = JsonConvert.DeserializeObject<UserDto>(session)!;
             var result = await apiClient.GetQuestions();
             Questions = result?.Value;
             return Page();
@@ -48,12 +48,13 @@ namespace RSAllies.Pages.Test
             var userResponse = new UserResponseDto
             {
                 UserId = UserData!.Id,
+                Name = $"{UserData.FirstName} {UserData.LastName}",
                 Responses = responses
             };
 
             IsPosted = true;
 
-            //await publisher.PublishUserResponses(userResponse);
+            await publisher.PublishUserResponses(userResponse);
 
             return Page();
 
