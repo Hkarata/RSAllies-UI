@@ -6,10 +6,9 @@ namespace RSAllies.MarkingService.Services;
 public static class MarkingService
 {
     private static List<AnswerDto>? _answers;
-
     private static List<AnswerDto> ReadAndDeserialize()
     {
-        var json = File.ReadAllText(@"D:\source\RSAllies\RSAllies.PDFService\Answers.json");
+        var json = File.ReadAllText(@"D:\source\RSAllies\RSAllies.MarkingService\Answers.json");
         return JsonConvert.DeserializeObject<List<AnswerDto>>(json)!;
     }
     public static int Mark(List<ResponseDto> responses)

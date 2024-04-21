@@ -55,7 +55,10 @@ namespace RSAllies.Pages.Booking
             else
             {
                 var result = await apiClient.GetFilteredSessionsAsync(Filter!.Region, Filter!.Date);
-                Sessions = result!.Value;
+                if (result!.IsSuccess)
+                {
+                    Sessions = result!.Value;
+                }
             }
 
             return Page();
