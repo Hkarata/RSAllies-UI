@@ -1,14 +1,11 @@
+﻿using Microsoft.Extensions.Hosting;
 using RSAllies.Data.Contracts;
-using RSAllies.MarkingService;
 using Wolverine;
 using Wolverine.RabbitMQ;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = Host.CreateDefaultBuilder();
 
-// Add services to the container.
-
-
-builder.Host.UseWolverine(options =>
+builder.UseWolverine(options =>
 {
     options.ListenToRabbitQueue("userAnswers-queue");
 
@@ -26,25 +23,7 @@ builder.Host.UseWolverine(options =>
     }).AutoProvision();
 });
 
-builder.Services.AddMemoryCache();
-
-builder.Services.AddScoped<UserResponseDtoHandler>();
-
-builder.Services.AddHttpClient<ApiClient>(client => client.BaseAddress = new Uri("https://localhost:5000"));
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
 
 app.Run();
