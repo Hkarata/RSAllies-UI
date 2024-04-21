@@ -12,17 +12,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseWolverine(options =>
 {
-	options.PublishMessage<UserResponseDto>()
-		.ToRabbitExchange("userAnswers-exc", exchange =>
-		{
-			exchange.BindQueue("userAnswers-queue", "exchange2userAnswers");
-		});
-		options.UseRabbitMq(x =>
-		{
-			x.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
-			x.UserName = "heri";
-			x.Password = "karata";
-		}).AutoProvision();
+    options.PublishMessage<UserResponseDto>()
+        .ToRabbitExchange("userAnswers-exc", exchange =>
+        {
+            exchange.BindQueue("userAnswers-queue", "exchange2userAnswers");
+        });
+    options.UseRabbitMq(x =>
+    {
+        x.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
+        x.UserName = "heri";
+        x.Password = "karata";
+    }).AutoProvision();
 });
 
 builder.Services.AddScoped<UserResponsePublisher>();
@@ -47,9 +47,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-	app.UseExceptionHandler("/Error");
-	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();

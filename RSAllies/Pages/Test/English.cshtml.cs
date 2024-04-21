@@ -8,10 +8,10 @@ namespace RSAllies.Pages.Test
     public class EnglishModel(ApiClient apiClient, UserResponsePublisher publisher) : PageModel
     {
         public UserDto? UserData { get; set; }
-        
+
         public bool IsPosted;
         public List<QuestionDto>? Questions { get; set; }
-        
+
         public async Task<IActionResult> OnGet()
         {
             var session = HttpContext.Session.GetString("UserSession");
@@ -25,7 +25,7 @@ namespace RSAllies.Pages.Test
 
         public async Task<IActionResult> OnPost()
         {
-            
+
             var form = Request.Form;
             var responses = new List<ResponseDto>();
 
@@ -44,7 +44,7 @@ namespace RSAllies.Pages.Test
 
             var session = HttpContext.Session.GetString("UserSession");
             UserData = JsonConvert.DeserializeObject<UserDto>(session!);
-            
+
             var userResponse = new UserResponseDto
             {
                 UserId = UserData!.Id,
@@ -60,7 +60,7 @@ namespace RSAllies.Pages.Test
 
         }
 
-        
+
 
     }
 }

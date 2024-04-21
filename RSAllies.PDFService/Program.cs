@@ -1,10 +1,3 @@
-using Microsoft.Extensions.Primitives;
-using Microsoft.Net.Http.Headers;
-using RSAllies.Data.Contracts;
-using RSAllies.PDFService.Services;
-using Wolverine;
-using Wolverine.RabbitMQ;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

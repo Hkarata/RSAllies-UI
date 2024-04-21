@@ -23,7 +23,7 @@ public class UserResponseDtoHandler(ApiClient apiClient, IMessageBus bus, IMemor
     public async Task Handle(UserResponseDto userResponse)
     {
         var userScore = MarkingService.Mark(await GetAnswers(), userResponse.Responses);
-        
+
         if (userScore >= 17)
         {
             await bus.SendAsync(new CreateCertificate { Name = userResponse.Name, UserId = userResponse.UserId });

@@ -8,6 +8,9 @@ public static class CertificateService
 {
     public static void CreateCertificate(string name, Guid userId)
     {
+        var filename = $"{userId}.pdf";
+        var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "PDFs", filename);
+
         Document.Create(document =>
         {
             document.Page(page =>
@@ -70,6 +73,6 @@ public static class CertificateService
                 });
             });
         })
-        .GeneratePdf($@"D:\source\RSAllies\RSAllies.PDFService\PDFs/{userId}.pdf");
+        .GeneratePdf(pdfPath);
     }
 }

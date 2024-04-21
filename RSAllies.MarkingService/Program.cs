@@ -17,7 +17,7 @@ builder.Host.UseWolverine(options =>
         {
             exchange.BindQueue("certificate-queue", "certificate4user");
         });
-    
+
     options.UseRabbitMq(factory =>
     {
         factory.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
