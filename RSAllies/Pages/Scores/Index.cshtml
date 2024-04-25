@@ -2,47 +2,159 @@
 @model IndexModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    ViewData["Title"] = "Scores";
+	ViewData["Title"] = "Scores";
 }
+
+
 
 <partial name="Shared/_StatusMessage" for="StatusMessage" />
 
 <div class="container-fluid">
 
-    <div class="row align-items-center">
-        <div class="col-md-6 order-md-first mb-5">
-            <img src="/images/exam-results.jpg" class="img-fluid rounded-start rounded-end" alt="Image description">
-        </div>
-        <div class="col-md-6">
+	<div class="row align-items-center">
+		<div class="col-md-6 order-md-first mb-5">
+			<img src="/images/exam-results.jpg" class="img-fluid rounded-start rounded-end" alt="Image description">
+		</div>
+		<div class="col-md-6">
 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="2" class="text-center">Examination Results</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Name</th>
-                        <td>@(Model.UserData?.FirstName + " " + Model.UserData?.LastName)</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Score</th>
-                        <td>17/25</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Status</th>
-                        <td> <span class="badge bg-success">Passed</span></td>
-                    </tr>
-                </tbody>
-            </table>
+			@if((Model.UserScore != null))
+			{
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th scope="col" colspan="2" class="text-center">
+								<span class="english">Examination Results</span>
+								<span class="swahili">Matokeo ya Mtihani</span>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">
+								<span class="english">Name</span>
+								<span class="swahili">Jina</span>
+							</th>
+							<td>@(Model.UserData?.FirstName + " " + Model.UserData?.LastName)</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<span class="english">Score</span>
+								<span class="swahili">Alama</span>
+							</th>
+							<td>@Model.UserScore?.ScoreValue/25</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<span class="english">Status</span>
+								<span class="swahili">Hali</span>
+							</th>
+							<td style="font-size:20px">
+								@if(Model.UserScore?.ScoreValue >= 17)
+								{
+									<span class="badge bg-success">
+										<span class="english">Passed</span>
+										<span class="swahili">Umefaulu</span>
+									</span>
+								}
+								else
+								{
+									<span class="badge bg-danger">
+										<span class="english">Failed</span>
+										<span class="swahili">Umefeli</span>
+									</span>
+								}
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-            <p class="english">View your examination results here. You can also download the results for offline viewing.</p>
-            <p class="swahili">Angalia matokeo yako ya mtihani hapa. Unaweza pia kupakua matokeo kwa ajili ya kuangalia nje ya mtandao.</p>
+				@if(Model.UserScore?.ScoreValue < 17)
+				{
+					<div class="alert alert-danger" role="alert">
+						<p class="english">You have failed the examination. You can retake the exam by booking a slot at a venue near you.</p>
+						<p class="swahili">Umefeli mtihani. Unaweza kufanya mtihani tena kwa kuhifadhi nafasi katika kituo chochote karibu nacho.</p>
+						<a class="btn btn-primary" asp-page="/Booking/Index">
+							<span class="english">Book Examination</span>
+							<span class="swahili">Hifadhi Nafasi</span>
+						</a>
+					</div>
+				}
+				else
+				{
+					 <div class="alert alert-success" role="alert">
+							<p class="english">View your results here. You can also download the certificate for offline viewing.</p>
+							<p class="swahili">Angalia matokeo yako ya mtihani hapa. Unaweza pia kupakua cheti kwa ajili ya kuangalia nje ya mtandao.</p>
 
-            <a class="btn btn-primary" href="/Scores/Download">Download Results</a>
+							<button class="btn btn-primary download-certificate" data-user-id="@Model.UserData?.Id">
+								<span class="english">Download Certificate</span>
+								<span class="swahili">Pakua Cheti</span>
+							</button>
+					 </div>
+				}
+			}
+			else
+			{
+				<div class="alert alert-warning" role="alert">
+					<p class="english">You have not taken the examination yet. Click the button below to book a slot at a venue near you, then you show up for the exam.</p>
+					<p class="swahili">Hujafanya mtihani bado. Bonyeza kitufe hapa chini kuanza hifadhi nafasi yako katika kituo chochote karibu nacho, kisha tokea kufanya mtihani.</p>
+				</div>
 
-        </div>
-    </div>
+				<a class="btn btn-primary" asp-page="/Booking/Index">
+					<span class="english">Book Examination</span>
+					<span class="swahili">Hifadhi Nafasi</span>
+				</a>
+			}
+
+
+		</div>
 
 </div>
+
+
+<div class="modal fade" id="downloadConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="downloadConfirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="english modal-title" id="downloadConfirmationModalLabel">Download Certificate</h5>
+		<h5 class="swahili modal-title" id="downloadConfirmationModalLabel">Pakua Cheti</h5>
+		<button type="button" class="btn-close text-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+	  </div>
+	  <div class="modal-body">
+		<p class="english">Click on the "Download" button to download your certificate.</p>
+		<p class="swahili">Bonyeza kitufe cha "Pakua" kupakua cheti chako.</p>
+
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">
+			<span class="english">Close</span>
+			<span class="swahili">Funga</span>
+		</button>
+		<a href="" class="btn btn-primary download-confirmed">
+			<span class="english">Download</span>
+			<span class="swahili">Pakua</span>
+		</a>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+@section Scripts {
+	<script>
+		$(document).ready(function () {
+		  // Click event handler for download button
+		  $(".download-certificate").click(function (event) {
+			event.preventDefault(); // Prevent default button action
+
+			let userId = $(this).data("user-id"); // Get user ID from button attribute
+
+			// Set the download link href attribute in the modal with the user ID
+			$("#downloadConfirmationModal .download-confirmed").attr("href", `https://localhost:7193/api/Certificates?userId=${userId}`);
+
+			// Show the confirmation modal
+			$("#downloadConfirmationModal").modal("show");
+		  });
+		});
+
+	</script>
+}

@@ -102,7 +102,7 @@ namespace RSAllies
             return result;
         }
 
-        public async Task<Result<ScoreDto>> GetUserScoreAsync(string id)
+        public async Task<Result<ScoreDto>?> GetUserScoreAsync(Guid id)
         {
             var response = await httpClient.GetAsync($"/api/score/{id}");
             if (!response.IsSuccessStatusCode) return null;
