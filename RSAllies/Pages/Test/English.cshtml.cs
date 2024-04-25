@@ -5,7 +5,7 @@ using RSAllies.Data.Contracts;
 
 namespace RSAllies.Pages.Test
 {
-    public class EnglishModel(ApiClient apiClient, UserResponsePublisher publisher) : PageModel
+    public class EnglishModel(ApiClient apiClient/*, UserResponsePublisher publisher*/) : PageModel
     {
         public UserDto? UserData { get; set; }
 
@@ -54,7 +54,7 @@ namespace RSAllies.Pages.Test
 
             IsPosted = true;
 
-            await publisher.PublishUserResponses(userResponse);
+            //await publisher.PublishUserResponses(userResponse);
 
             return Page();
 

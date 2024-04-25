@@ -16,7 +16,7 @@ namespace RSAllies.PDFService.Controllers
             {
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "PDFs", filename);
                 var stream = new FileStream(path, FileMode.Open);
-                return File(stream, "application/octet-stream", filename);
+                return File(stream, "application/pdf", filename);
             }
             catch (FileNotFoundException)
             {

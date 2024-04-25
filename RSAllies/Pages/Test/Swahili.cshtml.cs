@@ -5,7 +5,7 @@ using RSAllies.Data.Contracts;
 
 namespace RSAllies.Pages.Test
 {
-    public class SwahiliModel(ApiClient apiClient, UserResponsePublisher publisher) : PageModel
+    public class SwahiliModel(ApiClient apiClient/*, UserResponsePublisher publisher*/) : PageModel
     {
         public UserDto? UserData { get; set; }
 
@@ -53,7 +53,7 @@ namespace RSAllies.Pages.Test
                 Responses = responses
             };
 
-            await publisher.PublishUserResponses(userResponse);
+            //await publisher.PublishUserResponses(userResponse);
 
         }
     }

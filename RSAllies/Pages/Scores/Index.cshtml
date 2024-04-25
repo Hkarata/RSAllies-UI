@@ -1,5 +1,48 @@
 ﻿@page
-@model RSAllies.Pages.Scores.IndexModel
+@model IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Scores";
 }
+
+<partial name="Shared/_StatusMessage" for="StatusMessage" />
+
+<div class="container-fluid">
+
+    <div class="row align-items-center">
+        <div class="col-md-6 order-md-first mb-5">
+            <img src="/images/exam-results.jpg" class="img-fluid rounded-start rounded-end" alt="Image description">
+        </div>
+        <div class="col-md-6">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2" class="text-center">Examination Results</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>@(Model.UserData?.FirstName + " " + Model.UserData?.LastName)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Score</th>
+                        <td>17/25</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status</th>
+                        <td> <span class="badge bg-success">Passed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="english">View your examination results here. You can also download the results for offline viewing.</p>
+            <p class="swahili">Angalia matokeo yako ya mtihani hapa. Unaweza pia kupakua matokeo kwa ajili ya kuangalia nje ya mtandao.</p>
+
+            <a class="btn btn-primary" href="/Scores/Download">Download Results</a>
+
+        </div>
+    </div>
+
+</div>
