@@ -14,7 +14,7 @@ builder.Host.UseWolverine(options =>
     options.ListenToRabbitQueue("certificate-queue");
     options.UseRabbitMq(factory =>
     {
-        factory.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
+        factory.HostName = "mq-server.southafricanorth.cloudapp.azure.com";
         factory.UserName = "heri";
         factory.Password = "karata";
     }).AutoProvision();

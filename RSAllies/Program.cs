@@ -19,7 +19,7 @@ builder.Host.UseWolverine(options =>
         });
     options.UseRabbitMq(x =>
     {
-        x.HostName = "mqserver.southafricanorth.cloudapp.azure.com";
+        x.HostName = "mq-server.southafricanorth.cloudapp.azure.com";
         x.UserName = "heri";
         x.Password = "karata";
     }).AutoProvision();
