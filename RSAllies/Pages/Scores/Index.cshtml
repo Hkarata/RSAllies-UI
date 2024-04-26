@@ -7,6 +7,7 @@
 
 
 
+
 <partial name="Shared/_StatusMessage" for="StatusMessage" />
 
 <div class="container-fluid">
@@ -21,50 +22,50 @@
 			{
 				<table class="table table-bordered">
 					<thead>
-						<tr>
-							<th scope="col" colspan="2" class="text-center">
-								<span class="english">Examination Results</span>
-								<span class="swahili">Matokeo ya Mtihani</span>
-							</th>
-						</tr>
+					<tr>
+						<th scope="col" colspan="2" class="text-center">
+							<span class="english">Examination Results</span>
+							<span class="swahili">Matokeo ya Mtihani</span>
+						</th>
+					</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">
-								<span class="english">Name</span>
-								<span class="swahili">Jina</span>
-							</th>
-							<td>@(Model.UserData?.FirstName + " " + Model.UserData?.LastName)</td>
-						</tr>
-						<tr>
-							<th scope="row">
-								<span class="english">Score</span>
-								<span class="swahili">Alama</span>
-							</th>
-							<td>@Model.UserScore?.ScoreValue/25</td>
-						</tr>
-						<tr>
-							<th scope="row">
-								<span class="english">Status</span>
-								<span class="swahili">Hali</span>
-							</th>
-							<td style="font-size:20px">
-								@if(Model.UserScore?.ScoreValue >= 17)
-								{
-									<span class="badge bg-success">
-										<span class="english">Passed</span>
-										<span class="swahili">Umefaulu</span>
-									</span>
-								}
-								else
-								{
-									<span class="badge bg-danger">
-										<span class="english">Failed</span>
-										<span class="swahili">Umefeli</span>
-									</span>
-								}
-							</td>
-						</tr>
+					<tr>
+						<th scope="row">
+							<span class="english">Name</span>
+							<span class="swahili">Jina</span>
+						</th>
+						<td>@(Model.UserData?.FirstName + " " + Model.UserData?.LastName)</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<span class="english">Score</span>
+							<span class="swahili">Alama</span>
+						</th>
+						<td>@Model.UserScore?.ScoreValue/25</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<span class="english">Status</span>
+							<span class="swahili">Hali</span>
+						</th>
+						<td style="font-size:20px">
+							@if(Model.UserScore?.ScoreValue >= 17)
+							{
+								<span class="badge bg-success">
+									<span class="english">Passed</span>
+									<span class="swahili">Umefaulu</span>
+								</span>
+							}
+							else
+							{
+								<span class="badge bg-danger">
+									<span class="english">Failed</span>
+									<span class="swahili">Umefeli</span>
+								</span>
+							}
+						</td>
+					</tr>
 					</tbody>
 				</table>
 
@@ -81,15 +82,15 @@
 				}
 				else
 				{
-					 <div class="alert alert-success" role="alert">
-							<p class="english">View your results here. You can also download the certificate for offline viewing.</p>
-							<p class="swahili">Angalia matokeo yako ya mtihani hapa. Unaweza pia kupakua cheti kwa ajili ya kuangalia nje ya mtandao.</p>
+					<div class="alert alert-success" role="alert">
+						<p class="english">View your results here. You can also download the certificate for offline viewing.</p>
+						<p class="swahili">Angalia matokeo yako ya mtihani hapa. Unaweza pia kupakua cheti kwa ajili ya kuangalia nje ya mtandao.</p>
 
-							<button class="btn btn-primary download-certificate" data-user-id="@Model.UserData?.Id">
-								<span class="english">Download Certificate</span>
-								<span class="swahili">Pakua Cheti</span>
-							</button>
-					 </div>
+						<button class="btn btn-primary download-certificate" data-user-id="@Model.UserData?.Id">
+							<span class="english">Download Certificate</span>
+							<span class="swahili">Pakua Cheti</span>
+						</button>
+					</div>
 				}
 			}
 			else
@@ -108,8 +109,9 @@
 
 		</div>
 
-</div>
+	</div>
 
+</div>
 
 <div class="modal fade" id="downloadConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="downloadConfirmationModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -161,3 +163,5 @@
 
 	</script>
 }
+
+

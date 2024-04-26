@@ -9,4 +9,4 @@ public record FilteredSessionDto
     public int VenueCapacity { get; set; }
     public int CurrentCapacity { get; set; }
     public bool IsFull { get; set; }
-};
+}
