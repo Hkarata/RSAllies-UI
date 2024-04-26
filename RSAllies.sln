@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.Data", "RSAllies.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.PDFService", "RSAllies.PDFService\RSAllies.PDFService.csproj", "{36B6002E-8C0F-4099-9131-EDAF6D591C37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAllies.MarkingService", "RSAllies.MarkingService\RSAllies.MarkingService.csproj", "{05A30F1C-EF2A-4A65-92AE-FDA4ECC3668D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAllies.MarkingService", "RSAllies.MarkingService\RSAllies.MarkingService.csproj", "{05A30F1C-EF2A-4A65-92AE-FDA4ECC3668D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

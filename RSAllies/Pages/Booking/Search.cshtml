@@ -51,7 +51,7 @@
 			<span asp-validation-for="Filter!.Date" class="text-danger"></span>
 		</div>
 		<div class="col-md">
-			<label></label>
+			<label class="form-label" style="color: transparent">rrr</label>
 			<input type="submit" value="Filter" class="english form-control btn btn-primary" />
 		</div>
 		<input type="hidden" name="submittedForm" value="English">
@@ -142,8 +142,11 @@
 		}
 		else
 		{
-			<p class="english">No sessions found, Choose a region and Date</p>
-            <p class="swahili" style="display: none;">Hakuna Nafasi zilizopatikana, Chagua Mkoa na Tarehe</p>
+			<div class="d-flex justify-content-center align-items-center flex-column">
+				<img src="~/images/fragrance-free.gif" class="img-fluid" alt="No sessions found" width="150" height="150" />
+				<p class="english">No sessions found, Choose a region and Date</p>
+				<p class="swahili" style="display: none;">Hakuna Nafasi zilizopatikana, Chagua Mkoa na Tarehe</p>
+			</div>
 		}
 
 	</div>
