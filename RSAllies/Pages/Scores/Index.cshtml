@@ -114,18 +114,18 @@
 <div class="modal fade" id="downloadConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="downloadConfirmationModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
 	<div class="modal-content">
-	  <div class="modal-header">
+	  <div class="modal-header text-warning">
 		<h5 class="english modal-title" id="downloadConfirmationModalLabel">Download Certificate</h5>
 		<h5 class="swahili modal-title" id="downloadConfirmationModalLabel">Pakua Cheti</h5>
 		<button type="button" class="btn-close text-danger" data-bs-dismiss="modal" aria-label="Close"></button>
 	  </div>
 	  <div class="modal-body">
-		<p class="english">Click on the "Download" button to download your certificate.</p>
-		<p class="swahili">Bonyeza kitufe cha "Pakua" kupakua cheti chako.</p>
+					<p class="english">Click on the "<span class="text-info fw-bold">Download</span>" button to download your certificate.</p>
+					<p class="swahili">Bonyeza kitufe cha "<span class="text-info fw-bold">Pakua</span>" kupakua cheti chako.</p>
 
 	  </div>
 	  <div class="modal-footer">
-		<button type="button" class="btn btn-secondary" data-dismiss="modal">
+		<button type="button" id="funga" class="btn btn-secondary" data-bs-dismiss="modal">
 			<span class="english">Close</span>
 			<span class="swahili">Funga</span>
 		</button>
@@ -154,6 +154,9 @@
 			// Show the confirmation modal
 			$("#downloadConfirmationModal").modal("show");
 		  });
+
+
+
 		});
 
 	</script>
