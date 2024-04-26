@@ -150,8 +150,23 @@
 
 			let userId = $(this).data("user-id"); // Get user ID from button attribute
 
-			// Set the download link href attribute in the modal with the user ID
-			$("#downloadConfirmationModal .download-confirmed").attr("href", `https://localhost:7193/api/Certificates?userId=${userId}`);
+				$(".download-confirmed").click(function (event) {
+					event.preventDefault();
+
+					// Try AJAX request first
+					$.ajax({
+						url: `https://localhost:7193/api/Certificates?userId=${userId}`,
+						method: "GET", // Adjust method based on your API
+						success: function (data) {
+							// Handle successful download (data might contain download information)
+							console.log("Download successful!", data);
+							// You can show a success message to the user here (e.g., "Download complete!")
+						},
+						error: function (jqXHR, textStatus, errorThrown) {
+							alert("Please continue to wait for your certficate. Tafadhali endelea kusubiri cheti chako");
+						}
+					});
+				});
 
 			// Show the confirmation modal
 			$("#downloadConfirmationModal").modal("show");
