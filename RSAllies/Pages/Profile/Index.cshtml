@@ -6,4 +6,58 @@
 
 <div class="container-fluid">
 
+    <div class="card border-warning">
+
+        <div class="card-body">
+
+            <div class="d-flex flex-row align-items-center justify-content-between">
+
+                <div class="display-6" style="font-family:'Segoe Script'">Profile</div>
+                <img src="/images/profile.gif" width="75" height="75" />
+
+            </div>
+
+            <form>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label class="form-label" for="username">
+                            <span class="english">First Name</span>
+                            <span class="swahili">Jina la Kwanza</span>
+                        </label>
+                        <input type="text" class="form-control" id="username" value="@Model.UserData?.FirstName" readonly>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label class="form-label" for="email">
+                            <span class="english">Last Name</span>
+                            <span class="swahili">Jina la Mwisho</span>
+                        </label>
+                        <input type="email" class="form-control" id="email" value="@Model.UserData?.LastName" readonly>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label class="form-label" for="username">
+                            <span class="english">E-mail</span>
+                            <span class="swahili">Barua pepe</span>
+                        </label>
+                        <input type="text" class="form-control" id="username" value="@Model.UserData?.Email" readonly>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label class="form-label" for="email">
+                            <span class="english">Phone Number</span>
+                            <span class="swahili">Namba ya Simu</span>
+                        </label>
+                        <input type="email" class="form-control" id="email" value="@Model.UserData?.Phone" readonly>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
 </div>
