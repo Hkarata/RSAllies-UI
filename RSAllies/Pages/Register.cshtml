@@ -10,7 +10,7 @@
         <div class="col-md-6 col-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post">
+                    <form class="registerForm" method="post">
                         <div class="form-group mb-3">
                             <label for="firstName" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="firstName" asp-for="Input!.FirstName">
@@ -50,7 +50,7 @@
         <div class="col-md-6 col-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post">
+                    <form class="registerForm" method="post">
                         <div class="form-group mb-3">
                             <label for="firstName" class="form-label">Jina la Kwanza</label>
                             <input type="text" class="form-control" id="firstName" asp-for="SInput!.FirstName">
@@ -85,8 +85,34 @@
     </div>
 </div>
 
-
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img src="~/images/wip.gif" width="75" height="75" />
+                <p>
+                    <span class="english">Please wait...</span>
+                    <span class="swahili" style="display: none">Tafadhali subiri...</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+   @*  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} *@
+
+    <script>
+        $(document).ready(function () {
+            // Submit button click event handler
+            $(".registerForm").submit(function (event) {
+                
+
+                // Show the loading modal
+                $("#loadingModal").modal("show");
+
+                $('body').css('pointer-events', 'none')
+            });
+        });
+    </script>
 }
