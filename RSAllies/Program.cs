@@ -10,22 +10,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Add services to the container.
 
-//builder.Host.UseWolverine(options =>
-//{
-//    options.PublishMessage<UserResponseDto>()
-//        .ToRabbitExchange("userAnswers-exc", exchange =>
-//        {
-//            exchange.BindQueue("userAnswers-queue", "exchange2userAnswers");
-//        });
-//    options.UseRabbitMq(x =>
-//    {
-//        x.HostName = "mq-server.southafricanorth.cloudapp.azure.com";
-//        x.UserName = "heri";
-//        x.Password = "karata";
-//    }).AutoProvision();
-//});
+builder.Host.UseWolverine(options =>
+{
+    options.PublishMessage<UserResponseDto>()
+        .ToRabbitExchange("userAnswers-exc", exchange =>
+        {
+            exchange.BindQueue("userAnswers-queue", "exchange2userAnswers");
+        });
+    options.UseRabbitMq(x =>
+    {
+        x.HostName = "mq-server.southafricanorth.cloudapp.azure.com";
+        x.UserName = "heri";
+        x.Password = "karata";
+    }).AutoProvision();
+});
 
-//builder.Services.AddScoped<UserResponsePublisher>();
+builder.Services.AddScoped<UserResponsePublisher>();
 
 builder.Services.AddSession();
 

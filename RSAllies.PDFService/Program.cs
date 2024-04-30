@@ -9,16 +9,16 @@ builder.Services.AddControllers();
 
 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
-//builder.Host.UseWolverine(options =>
-//{
-//    options.ListenToRabbitQueue("certificate-queue");
-//    options.UseRabbitMq(factory =>
-//    {
-//        factory.HostName = "mq-server.southafricanorth.cloudapp.azure.com";
-//        factory.UserName = "heri";
-//        factory.Password = "karata";
-//    }).AutoProvision();
-//});
+builder.Host.UseWolverine(options =>
+{
+    options.ListenToRabbitQueue("certificate-queue");
+    options.UseRabbitMq(factory =>
+    {
+        factory.HostName = "mq-server.southafricanorth.cloudapp.azure.com";
+        factory.UserName = "heri";
+        factory.Password = "karata";
+    }).AutoProvision();
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
